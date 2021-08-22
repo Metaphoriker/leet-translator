@@ -18,6 +18,7 @@ public class LeetTranslator {
     private String getLeetLetter(String s, int index) {
 
         String current = String.valueOf(s.charAt(index));
+
         if(Character.isAlphabetic(s.charAt(index)))
             return LeetLetter.fromLetter(current).getLeet(LeetLevel.NUMBERS_AND_SYMBOLS); /* TODO hardcoded */
         return current;
