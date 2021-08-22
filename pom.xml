@@ -22,7 +22,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>xyz.leettranslator.leettranslate.LeetBase</mainClass>
+            <mainClass>xyz.leet.translator.LeetBase</mainClass>
           </manifest>
         </archive>
       </configuration>
