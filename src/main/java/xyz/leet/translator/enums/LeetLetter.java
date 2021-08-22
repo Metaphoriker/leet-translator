@@ -27,7 +27,18 @@ public enum LeetLetter {
     W("W", "\\/\\/"),
     X("X", "X"),
     Y("Y", "\\|/"),
-    Z("2", "2");
+    Z("2", "2"),
+    DEFAULT("", "");
+
+    public static LeetLetter fromLetter(String letter) {
+
+        for(LeetLetter leetLetter : LeetLetter.values()) {
+
+            if(leetLetter.name().equals(letter.toUpperCase()))
+                return leetLetter;
+        }
+        return DEFAULT;
+    }
 
     public static LeetLetter fromLeet(String leet) {
 
@@ -36,7 +47,7 @@ public enum LeetLetter {
             if(leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet))
                 return leetLetter;
         }
-        return null;
+        return DEFAULT;
     }
 
     private final String levelOne, levelTwo;
@@ -47,11 +58,11 @@ public enum LeetLetter {
         this.levelTwo = levelTwo;
     }
 
-    public String getLevelOne() {
-        return levelOne;
+    public String getLetter() {
+        return this.name();
     }
 
-    public String getLevelTwo() {
-        return levelTwo;
+    public String getLeet(LeetLevel leetLevel) {
+        return leetLevel == LeetLevel.NUMBERS ? levelOne : levelTwo;
     }
 }
