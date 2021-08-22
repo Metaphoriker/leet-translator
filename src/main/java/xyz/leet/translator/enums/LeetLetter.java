@@ -1,5 +1,7 @@
 package xyz.leet.translator.enums;
 
+import java.util.function.Predicate;
+
 public enum LeetLetter {
 
     A("4", "4"),
@@ -31,21 +33,22 @@ public enum LeetLetter {
     DEFAULT("", "");
 
     public static LeetLetter fromLetter(String letter) {
-
-        for(LeetLetter leetLetter : LeetLetter.values()) {
-
-            if(leetLetter.name().equals(letter.toUpperCase()))
-                return leetLetter;
-        }
-        return DEFAULT;
+        return getLeetLetterByPredicate(leetLetter -> leetLetter.name().equals(letter.toUpperCase()));
     }
 
     public static LeetLetter fromLeet(String leet) {
+        return getLeetLetterByPredicate(leetLetter -> leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet));
+    }
 
-        for(LeetLetter leetLetter : LeetLetter.values()) {
+    /*
+    Probably not the best name for a damn method tho
+     */
+    private static LeetLetter getLeetLetterByPredicate(Predicate<LeetLetter> predicate) {
 
-            if(leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet))
-                return leetLetter;
+        for(LeetLetter letter : LeetLetter.values()) {
+
+            if(predicate.test(letter))
+                return letter;
         }
         return DEFAULT;
     }
