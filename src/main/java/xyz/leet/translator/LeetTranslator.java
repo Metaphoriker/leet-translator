@@ -13,9 +13,9 @@ public class LeetTranslator {
 
             String current = String.valueOf(normal.charAt(i));
 
-            if(!current.equals(" "))
+            if(Character.isAlphabetic(normal.charAt(i)))
                 builder.append(LeetLetter.fromLetter(current).getLeet(LeetLevel.NUMBERS_AND_SYMBOLS));
-            else builder.append(" ");
+            else builder.append(current);
         }
 
         return builder.toString();
