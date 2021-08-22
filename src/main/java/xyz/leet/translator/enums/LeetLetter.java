@@ -40,6 +40,10 @@ public enum LeetLetter {
         return getLeetLetterByPredicate(leetLetter -> leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet));
     }
 
+    public static boolean match(String s) {
+        return fromLeet(s) != DEFAULT;
+    }
+
     /*
     Probably not the best name for a damn method tho
      */

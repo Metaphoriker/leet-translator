@@ -12,13 +12,17 @@ public class LeetTranslator {
         for(int i = 0; i != normal.length(); i++) {
 
             String current = String.valueOf(normal.charAt(i));
-
-            if(Character.isAlphabetic(normal.charAt(i)))
-                builder.append(LeetLetter.fromLetter(current).getLeet(LeetLevel.NUMBERS_AND_SYMBOLS));
-            else builder.append(current);
+            builder.append(getLeetLetter(current, i));
         }
 
         return builder.toString();
+    }
+
+    private String getLeetLetter(String s, int index) {
+
+        if(Character.isAlphabetic(s.charAt(index)))
+            return LeetLetter.fromLetter(s).getLeet(LeetLevel.NUMBERS_AND_SYMBOLS); /* TODO hardcoded */
+        return s;
     }
 
     //TODO
@@ -30,9 +34,9 @@ public class LeetTranslator {
 
             String current = String.valueOf(leet.charAt(i));
 
-            if(!current.equals(" "))
-                builder.append(LeetLetter.fromLeet(current));
-            else builder.append(" ");
+            if(Character.isDigit(leet.charAt(i)))
+                builder.append(LeetLetter.fromLeet(current).getLetter());
+            else if(!Character.isAlphabetic(leet.charAt(i))) builder.append(" ");
         }
         return builder.toString();
     }
