@@ -9,11 +9,8 @@ public class LeetTranslator {
 
         StringBuilder builder = new StringBuilder();
 
-        for(int i = 0; i != normal.length(); i++) {
-
-            String current = String.valueOf(normal.charAt(i));
-            builder.append(getLeetLetter(current, i));
-        }
+        for(int i = 0; i != normal.length(); i++)
+            builder.append(getLeetLetter(normal, i));
 
         return builder.toString();
     }
