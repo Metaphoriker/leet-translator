@@ -1,5 +1,6 @@
 package xyz.leet.translator.enums;
 
+import java.util.*;
 import java.util.function.Predicate;
 
 public enum LeetLetter {
@@ -79,5 +80,18 @@ public enum LeetLetter {
             case LEET_LEVEL_3 -> levelThree;
             case DISCORD_EMOJI, CAESAR_SHIFT, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
         };
+    }
+
+    public static List<String> getLeetFillers(LeetLevel leetLevel) {
+
+        List<String> generics = new ArrayList<>();
+
+        for (LeetLetter value : LeetLetter.values()) {
+            if (value == LeetLetter.DEFAULT) continue;
+            generics.add(value.getLeet(leetLevel));
+        }
+        generics.sort((string1, string2) -> string2.length() - string1.length());
+
+        return generics;
     }
 }

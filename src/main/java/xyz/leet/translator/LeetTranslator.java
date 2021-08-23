@@ -2,10 +2,7 @@ package xyz.leet.translator;
 
 import xyz.leet.translator.enums.LeetLetter;
 import xyz.leet.translator.enums.LeetLevel;
-import xyz.leet.translator.enums.LevelLeetCodes;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class LeetTranslator {
@@ -33,8 +30,8 @@ public class LeetTranslator {
         Optional<LeetLevel> leetLevel = this.getEncryption(leet);
         leet = getWithoutEncrytpionCode(leet);
 
-        for (String generic : LevelLeetCodes.genericsFromLeetLevel(leetLevel.get())) {
-            leet = leet.replace(generic, LeetLetter.fromLeet(generic).name());
+        for (String filler : LeetLetter.getLeetFillers(leetLevel.get())) {
+            leet = leet.replace(filler, LeetLetter.fromLeet(filler).name());
         }
 
         return leet;
