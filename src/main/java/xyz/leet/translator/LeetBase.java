@@ -8,8 +8,13 @@ public class LeetBase {
 
     public static void main(String[] args) {
 
-        String leet = LEET_TRANSLATOR.toLeet("just get the translator or contribute to it, so you will understand what i write. GodCipher is a fucking wanker mate", LeetLevel.LEET_LEVEL_1);
+        String leet = LEET_TRANSLATOR.toLeet("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z", LeetLevel.LEET_LEVEL_1);
+        String leet2 = LEET_TRANSLATOR.toLeet("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z", LeetLevel.LEET_LEVEL_2);
+        String leet3 = LEET_TRANSLATOR.toLeet("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z", LeetLevel.LEET_LEVEL_3);
+
         System.out.println(LEET_TRANSLATOR.toNormal(leet));
+        System.out.println(LEET_TRANSLATOR.toNormal(leet2));
+        System.out.println(LEET_TRANSLATOR.toNormal(leet3));
     }
 
 }
