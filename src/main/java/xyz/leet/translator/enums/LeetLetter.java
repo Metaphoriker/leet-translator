@@ -77,7 +77,7 @@ public enum LeetLetter {
             case LEET_LEVEL_1 -> levelOne;
             case LEET_LEVEL_2 -> levelTwo;
             case LEET_LEVEL_3 -> levelThree;
-            case EMOJI, CAESAR_SHIFT, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
+            case DISCORD_EMOJI, CAESAR_SHIFT, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
         };
     }
 }

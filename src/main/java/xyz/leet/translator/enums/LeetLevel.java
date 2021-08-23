@@ -5,7 +5,7 @@ public enum LeetLevel {
     LEET_LEVEL_1("L1"),
     LEET_LEVEL_2("L2"),
     LEET_LEVEL_3("L3"),
-    EMOJI("E"),
+    DISCORD_EMOJI("E"),
     CAESAR_SHIFT("CS"),
     FUCKERY("F");
 
