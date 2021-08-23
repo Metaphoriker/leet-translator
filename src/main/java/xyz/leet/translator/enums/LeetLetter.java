@@ -17,7 +17,7 @@ public enum LeetLetter {
     K("K", "X", "|<"),
     L("1", "1", "L_"),
     M("M", "|\\/|", "|\\/|"),
-    N("N", "|V", "|\\|"),
+    N("N", "|\\|", "|\\|"),
     O("0", "0", "[]"),
     P("P", "|*", "|>"),
     Q("Q", "(_,)", "(_,)"),
@@ -37,7 +37,7 @@ public enum LeetLetter {
     }
 
     public static LeetLetter fromLeet(String leet) {
-        return getLeetLetterByPredicate(leetLetter -> leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet));
+        return getLeetLetterByPredicate(leetLetter -> leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet) || leetLetter.levelThree.equalsIgnoreCase(leet));
     }
 
     public static boolean match(String s) {
