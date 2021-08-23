@@ -45,6 +45,20 @@ public enum LeetLetter {
         return fromLeet(s) != DEFAULT;
     }
 
+    public static List<String> getLeetFillers(LeetLevel leetLevel) {
+
+        List<String> generics = new ArrayList<>();
+
+        for (LeetLetter value : LeetLetter.values()) {
+
+            if (value == LeetLetter.DEFAULT) continue;
+            generics.add(value.getLeet(leetLevel));
+        }
+        generics.sort((string1, string2) -> string2.length() - string1.length());
+
+        return generics;
+    }
+
     /*
     Probably not the best name for a damn method tho
      */
@@ -82,16 +96,4 @@ public enum LeetLetter {
         };
     }
 
-    public static List<String> getLeetFillers(LeetLevel leetLevel) {
-
-        List<String> generics = new ArrayList<>();
-
-        for (LeetLetter value : LeetLetter.values()) {
-            if (value == LeetLetter.DEFAULT) continue;
-            generics.add(value.getLeet(leetLevel));
-        }
-        generics.sort((string1, string2) -> string2.length() - string1.length());
-
-        return generics;
-    }
 }
