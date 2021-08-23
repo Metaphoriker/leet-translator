@@ -7,7 +7,10 @@ import java.util.Optional;
 
 public class LeetTranslator {
 
-    public String toLeet(String normal, LeetLevel leetLevel) {
+    /**
+     * Translates the given *normal* String to Leet
+     */
+    public String translate(String normal, LeetLevel leetLevel) {
 
         StringBuilder builder = new StringBuilder();
 
@@ -16,16 +19,10 @@ public class LeetTranslator {
         return addEncryptionCode(builder.toString(), leetLevel);
     }
 
-    private String getLeetLetter(String s, int index, LeetLevel leetLevel) {
-
-        String current = String.valueOf(s.charAt(index));
-
-        if(Character.isAlphabetic(s.charAt(index)))
-            return LeetLetter.fromLetter(current).getLeet(leetLevel);
-        return current;
-    }
-
-    public String toNormal(String leet) {
+    /**
+     * Translates the given *leet* String to normal
+     */
+    public String translate(String leet) {
 
         Optional<LeetLevel> leetLevel = this.getEncryption(leet);
         leet = getWithoutEncrytpionCode(leet);
@@ -36,6 +33,15 @@ public class LeetTranslator {
             leet = leet.replace(filler, LeetLetter.fromLeet(filler).name());
 
         return leet;
+    }
+
+    private String getLeetLetter(String s, int index, LeetLevel leetLevel) {
+
+        String current = String.valueOf(s.charAt(index));
+
+        if(Character.isAlphabetic(s.charAt(index)))
+            return LeetLetter.fromLetter(current).getLeet(leetLevel);
+        return current;
     }
 
     private String addEncryptionCode(String s, LeetLevel leetLevel) {
