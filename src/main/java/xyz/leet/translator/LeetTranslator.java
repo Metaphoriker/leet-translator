@@ -13,7 +13,7 @@ public class LeetTranslator {
 
         for(int i = 0; i != normal.length(); i++)
             builder.append(getLeetLetter(normal, i, leetLevel));
-        return builder.toString();
+        return addEncryptionCode(builder.toString(), leetLevel);
     }
 
     private String getLeetLetter(String s, int index, LeetLevel leetLevel) {
