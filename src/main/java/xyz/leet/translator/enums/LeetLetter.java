@@ -71,6 +71,13 @@ public enum LeetLetter {
     }
 
     public String getLeet(LeetLevel leetLevel) {
-        return leetLevel == LeetLevel.LEET_LEVEL_1 ? levelOne : levelTwo;
+
+        return switch (leetLevel) {
+
+            case LEET_LEVEL_1 -> levelOne;
+            case LEET_LEVEL_2 -> levelTwo;
+            case LEET_LEVEL_3 -> levelThree;
+            case EMOJI, CAESAR_SHIFT, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
+        };
     }
 }

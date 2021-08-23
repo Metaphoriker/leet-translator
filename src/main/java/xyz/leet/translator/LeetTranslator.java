@@ -7,22 +7,21 @@ import java.util.Optional;
 
 public class LeetTranslator {
 
-    public String toLeet(String normal) {
+    public String toLeet(String normal, LeetLevel leetLevel) {
 
         StringBuilder builder = new StringBuilder();
 
         for(int i = 0; i != normal.length(); i++)
-            builder.append(getLeetLetter(normal, i));
-
+            builder.append(getLeetLetter(normal, i, leetLevel));
         return builder.toString();
     }
 
-    private String getLeetLetter(String s, int index) {
+    private String getLeetLetter(String s, int index, LeetLevel leetLevel) {
 
         String current = String.valueOf(s.charAt(index));
 
         if(Character.isAlphabetic(s.charAt(index)))
-            return LeetLetter.fromLetter(current).getLeet(LeetLevel.LEET_LEVEL_2); /* TODO hardcoded */
+            return LeetLetter.fromLetter(current).getLeet(leetLevel);
         return current;
     }
 
