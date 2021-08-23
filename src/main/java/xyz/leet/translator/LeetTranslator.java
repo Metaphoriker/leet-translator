@@ -30,9 +30,8 @@ public class LeetTranslator {
         Optional<LeetLevel> leetLevel = this.getEncryption(leet);
         leet = getWithoutEncrytpionCode(leet);
 
-        for (String filler : LeetLetter.getLeetFillers(leetLevel.get())) {
+        for (String filler : LeetLetter.getLeetFillers(leetLevel.get()))
             leet = leet.replace(filler, LeetLetter.fromLeet(filler).name());
-        }
 
         return leet;
     }
