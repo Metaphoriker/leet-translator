@@ -31,8 +31,7 @@ public class LeetTranslator {
     public String toNormal(String leet) {
 
         Optional<LeetLevel> leetLevel = this.getEncryption(leet);
-
-        leet = leet.substring(0, leet.length() - leetLevel.get().getEncryptionCode().length());
+        leet = getWithoutEncrytpionCode(leet);
 
         for (String generic : LevelLeetCodes.genericsFromLeetLevel(leetLevel.get())) {
             leet = leet.replace(generic, LeetLetter.fromLeet(generic).name());
@@ -43,6 +42,12 @@ public class LeetTranslator {
 
     private String addEncryptionCode(String s, LeetLevel leetLevel) {
         return s + leetLevel.getEncryptionCode();
+    }
+
+    private String getWithoutEncrytpionCode(String s) {
+
+        Optional<LeetLevel> leetLevel = this.getEncryption(s);
+        return s.substring(0, s.length() - leetLevel.get().getEncryptionCode().length());
     }
 
     private Optional<LeetLevel> getEncryption(String s) {
