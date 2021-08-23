@@ -4,33 +4,33 @@ import java.util.function.Predicate;
 
 public enum LeetLetter {
 
-    A("4", "4"),
-    B("8", "8"),
-    C("C", "|="),
-    D("D", "|>"),
-    E("3", "3"),
-    F("F", "|="),
-    G("9", "9"),
-    H("H", "|-|"),
-    I("1", "1"),
-    J("J", "_|"),
-    K("K", "|<"),
-    L("1", "1"),
-    M("M", "|//|"),
-    N("N", "|/|"),
-    O("0", "O"),
-    P("P", "|*"),
-    Q("Q", "Q"),
-    R("2", "|\\"),
-    S("5", "5"),
-    T("7", "7"),
-    U("U", "|_|"),
-    V("V", "\\/"),
-    W("W", "\\/\\/"),
-    X("X", "X"),
-    Y("Y", "\\|/"),
-    Z("2", "2"),
-    DEFAULT("", "");
+    A("4", "4", "/-\\"),
+    B("8", "8", "[3"),
+    C("C", "(", "("),
+    D("D", "[)", "|)"),
+    E("3", "3", "[-"),
+    F("F", "|=", "|="),
+    G("9", "9", "(_+"),
+    H("H", "|-|", "#"),
+    I("1", "1", "!"),
+    J("J", "_|", "_|"),
+    K("K", "X", "|<"),
+    L("1", "1", "L_"),
+    M("M", "|\\/|", "|\\/|"),
+    N("N", "|V", "|\\|"),
+    O("0", "0", "[]"),
+    P("P", "|*", "|>"),
+    Q("Q", "(_,)", "(_,)"),
+    R("2", "2", "/2"),
+    S("5", "5", "$"),
+    T("7", "7", "'|'"),
+    U("U", "(_)", "|_|"),
+    V("V", "\\/", "|/"),
+    W("W", "\\/\\/", "\\|/"),
+    X("X", "><", ")("),
+    Y("Y", "\\|/", "`/"),
+    Z("2", "2", "7_"),
+    DEFAULT("", "", "");
 
     public static LeetLetter fromLetter(String letter) {
         return getLeetLetterByPredicate(leetLetter -> leetLetter.name().equals(letter.toUpperCase()));
@@ -57,12 +57,13 @@ public enum LeetLetter {
         return DEFAULT;
     }
 
-    private final String levelOne, levelTwo;
+    private final String levelOne, levelTwo, levelThree;
 
-    LeetLetter(String levelOne, String levelTwo) {
+    LeetLetter(String levelOne, String levelTwo, String levelThree) {
 
         this.levelOne = levelOne;
         this.levelTwo = levelTwo;
+        this.levelThree = levelThree;
     }
 
     public String getLetter() {
@@ -70,6 +71,6 @@ public enum LeetLetter {
     }
 
     public String getLeet(LeetLevel leetLevel) {
-        return leetLevel == LeetLevel.NUMBERS ? levelOne : levelTwo;
+        return leetLevel == LeetLevel.LEET_LEVEL_1 ? levelOne : levelTwo;
     }
 }

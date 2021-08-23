@@ -20,7 +20,7 @@ public class LeetTranslator {
         String current = String.valueOf(s.charAt(index));
 
         if(Character.isAlphabetic(s.charAt(index)))
-            return LeetLetter.fromLetter(current).getLeet(LeetLevel.NUMBERS_AND_SYMBOLS); /* TODO hardcoded */
+            return LeetLetter.fromLetter(current).getLeet(LeetLevel.LEET_LEVEL_2); /* TODO hardcoded */
         return current;
     }
 
