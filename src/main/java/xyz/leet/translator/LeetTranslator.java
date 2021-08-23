@@ -3,6 +3,8 @@ package xyz.leet.translator;
 import xyz.leet.translator.enums.LeetLetter;
 import xyz.leet.translator.enums.LeetLevel;
 
+import java.util.Optional;
+
 public class LeetTranslator {
 
     public String toLeet(String normal) {
@@ -38,6 +40,20 @@ public class LeetTranslator {
             else if(!Character.isAlphabetic(leet.charAt(i))) builder.append(" ");
         }
         return builder.toString();
+    }
+
+    private String addEncryptionCode(String s, LeetLevel leetLevel) {
+        return s + leetLevel.getEncryptionCode();
+    }
+
+    private Optional<LeetLevel> getEncryption(String s) {
+
+        for(LeetLevel leetLevel : LeetLevel.values()) {
+
+            if(s.endsWith(leetLevel.getEncryptionCode()))
+                return Optional.of(leetLevel);
+        }
+        return Optional.empty();
     }
 
 }
