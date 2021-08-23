@@ -6,6 +6,7 @@ import java.util.List;
 public interface LevelLeetCodes {
 
     List<String> level1Generics = new ArrayList<>() {{
+
         add("4");
         add("8");
         add("C");
@@ -35,6 +36,7 @@ public interface LevelLeetCodes {
     }};
 
     List<String> level2Generics = new ArrayList<>() {{
+
         add("\\/\\/");
         add("|\\/|");
         add("|\\|");
@@ -64,6 +66,7 @@ public interface LevelLeetCodes {
     }};
 
     List<String> level3Generics = new ArrayList<>() {{
+
         add("|\\/|");
         add("/-\\");
         add("|\\|");
@@ -93,11 +96,12 @@ public interface LevelLeetCodes {
     }};
 
     static List<String> genericsFromLeetLevel(LeetLevel leetLevel) {
+
         return switch (leetLevel) {
             case LEET_LEVEL_1 -> level1Generics;
             case LEET_LEVEL_2 -> level2Generics;
             case LEET_LEVEL_3 -> level3Generics;
-            case EMOJI, CAESAR_SHIFT, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
+            case DISCORD_EMOJI, CAESAR_SHIFT, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
         };
     }
 
