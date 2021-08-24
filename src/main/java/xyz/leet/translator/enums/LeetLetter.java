@@ -5,40 +5,40 @@ import java.util.function.Predicate;
 
 public enum LeetLetter {
 
-    A("4", "4", "/-\\"),
-    B("8", "8", "[3"),
-    C("C", "(", "("),
-    D("D", "[)", "|)"),
-    E("3", "3", "[-"),
-    F("F", "|=", "|="),
-    G("9", "9", "(_+"),
-    H("H", "|-|", "#"),
-    I(":", ":", "!"),
-    J("J", "_|", "_|"),
-    K("K", "K", "|<"),
-    L("1", "1", "L_"),
-    M("M", "|\\/|", "|\\/|"),
-    N("N", "|\\|", "|\\|"),
-    O("0", "0", "[]"),
-    P("P", "|*", "|>"),
-    Q("Q", "(_,)", "(_,)"),
-    R("!2", "|2", "/2"),
-    S("5", "5", "$"),
-    T("7", "7", "'|'"),
-    U("U", "(_)", "|_|"),
-    V("V", "\\/", "|/"),
-    W("W", "\\/\\/", "\\|/"),
-    X("X", "><", ")("),
-    Y("Y", "\\`", "`/"),
-    Z("2", "2", "7_"),
-    DEFAULT("", "", "");
+    A("4", "4", "/-\\","R"),
+    B("8", "8", "[3","S"),
+    C("C", "(", "(","T"),
+    D("D", "[)", "|)","U"),
+    E("3", "3", "[-","V"),
+    F("F", "|=", "|=","W"),
+    G("9", "9", "(_+","X"),
+    H("H", "|-|", "#","Y"),
+    I(":", ":", "!","Z"),
+    J("J", "_|", "_|","A"),
+    K("K", "K", "|<","B"),
+    L("1", "1", "L_","C"),
+    M("M", "|\\/|", "|\\/|","D"),
+    N("N", "|\\|", "|\\|","E"),
+    O("0", "0", "[]","F"),
+    P("P", "|*", "|>","G"),
+    Q("Q", "(_,)", "(_,)","H"),
+    R("!2", "|2", "/2","I"),
+    S("5", "5", "$","J"),
+    T("7", "7", "'|'","K"),
+    U("U", "(_)", "|_|","L"),
+    V("V", "\\/", "|/","M"),
+    W("W", "\\/\\/", "\\|/","N"),
+    X("X", "><", ")(","O"),
+    Y("Y", "\\`", "`/","P"),
+    Z("2", "2", "7_","Q"),
+    DEFAULT(" ", " ", " "," ");
 
     public static LeetLetter fromLetter(String letter) {
         return getLeetLetterByPredicate(leetLetter -> leetLetter.name().equals(letter.toUpperCase()));
     }
 
     public static LeetLetter fromLeet(String leet) {
-        return getLeetLetterByPredicate(leetLetter -> isLeetOf(leetLetter, leet));
+        return getLeetLetterByPredicate(leetLetter -> leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet) || leetLetter.levelThree.equalsIgnoreCase(leet) || leetLetter.caesarShift.equalsIgnoreCase(leet));
     }
 
     public static boolean match(String s) {
@@ -59,10 +59,6 @@ public enum LeetLetter {
         return generics;
     }
 
-    private static boolean isLeetOf(LeetLetter leetLetter, String leet) {
-        return leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet) || leetLetter.levelThree.equalsIgnoreCase(leet);
-    }
-
     /*
     Probably not the best name for a damn method tho
      */
@@ -76,13 +72,14 @@ public enum LeetLetter {
         return DEFAULT;
     }
 
-    private final String levelOne, levelTwo, levelThree;
+    private final String levelOne, levelTwo, levelThree, caesarShift;
 
-    LeetLetter(String levelOne, String levelTwo, String levelThree) {
+    LeetLetter(String levelOne, String levelTwo, String levelThree, String caesarShift) {
 
         this.levelOne = levelOne;
         this.levelTwo = levelTwo;
         this.levelThree = levelThree;
+        this.caesarShift = caesarShift;
     }
 
     public String getLetter() {
@@ -96,7 +93,8 @@ public enum LeetLetter {
             case LEET_LEVEL_1 -> levelOne;
             case LEET_LEVEL_2 -> levelTwo;
             case LEET_LEVEL_3 -> levelThree;
-            case DISCORD_EMOJI, CAESAR_SHIFT, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
+            case CAESAR_SHIFT -> caesarShift;
+            case DISCORD_EMOJI, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
         };
     }
 
