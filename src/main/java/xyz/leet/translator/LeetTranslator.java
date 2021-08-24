@@ -7,9 +7,9 @@ public interface LeetTranslator {
 
     String convert(Letter letter, EncryptionType encryptionType);
 
-    String toLeet(Letter letter);
+    String toLeet(Letter letter, int level);
 
-    String toCaesarShift(Letter letter);
+    String toCaesarShift(Letter letter, int shift);
 
     String toEmoji(Letter letter);
 

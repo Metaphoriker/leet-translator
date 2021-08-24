@@ -13,12 +13,12 @@ public class LeetTranslatorImpl implements LeetTranslator {
     }
 
     @Override
-    public String toLeet(Letter letter) {
+    public String toLeet(Letter letter, int level) {
         return null;
     }
 
     @Override
-    public String toCaesarShift(Letter letter) {
+    public String toCaesarShift(Letter letter, int shift) {
         return null;
     }
 
