@@ -38,7 +38,7 @@ public enum LeetLetter {
     }
 
     public static LeetLetter fromLeet(String leet) {
-        return getLeetLetterByPredicate(leetLetter -> leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet) || leetLetter.levelThree.equalsIgnoreCase(leet));
+        return getLeetLetterByPredicate(leetLetter -> isLeetOf(leetLetter, leet));
     }
 
     public static boolean match(String s) {
@@ -57,6 +57,10 @@ public enum LeetLetter {
         generics.sort((string1, string2) -> string2.length() - string1.length());
 
         return generics;
+    }
+
+    private static boolean isLeetOf(LeetLetter leetLetter, String leet) {
+        return leetLetter.levelOne.equalsIgnoreCase(leet) || leetLetter.levelTwo.equalsIgnoreCase(leet) || leetLetter.levelThree.equalsIgnoreCase(leet);
     }
 
     /*
