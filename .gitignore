@@ -1,5 +1,6 @@
-target/
-.idea/
-.netbeans*
-*.jar
-*.class
+target/ # Maven folder for compiled bytecode/Java Archives
+.idea/ # JetBrains Intellij IDEA user files
+.netbeans* # Netbeans stuff
+*.jar # Java Archives
+*.class # Compiled classes
+*.form # Netbeans GUI editor form file
