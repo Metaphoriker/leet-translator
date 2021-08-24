@@ -12,19 +12,41 @@ import java.util.concurrent.ThreadLocalRandom;
 public class LeetTranslatorImpl implements LeetTranslator {
 
     @Override
-    public String convert(Letter letter, EncryptionType encryptionType) {
+    public String convert(String toConvert, EncryptionType encryptionType) {
 
         //TODO hardcoded
         int shift = ThreadLocalRandom.current().nextInt(5)+1;
         return switch (encryptionType) {
 
-            case LEET_LEVEL_1 -> addEncryptionCode(toLeet(letter, 1), encryptionType);
-            case LEET_LEVEL_2 -> addEncryptionCode(toLeet(letter, 2), encryptionType);
-            case LEET_LEVEL_3 -> addEncryptionCode(toLeet(letter, 3), encryptionType);
-            case EMOJI -> addEncryptionCode(toEmoji(letter), encryptionType);
-            case CAESAR_SHIFT -> addEncryptionCode(shift+toCaesarShift(letter, shift), encryptionType);
+            case LEET_LEVEL_1 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 1), encryptionType);
+            case LEET_LEVEL_2 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 2), encryptionType);
+            case LEET_LEVEL_3 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 3), encryptionType);
+            case EMOJI -> addEncryptionCode(loopThroughString(toConvert, encryptionType, -1), encryptionType);
+            case CAESAR_SHIFT -> addEncryptionCode(shift+loopThroughString(toConvert, encryptionType, shift), encryptionType);
             case FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
         };
+    }
+
+    private String loopThroughString(String s, EncryptionType encryptionType, int integer) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for(int i = 0; i < s.length(); i++) {
+
+            char current = s.charAt(i);
+            Letter letter = Letter.valueOf(String.valueOf(current).toUpperCase());
+
+            switch (encryptionType) {
+
+                case LEET_LEVEL_1, LEET_LEVEL_3, LEET_LEVEL_2 -> stringBuilder.append(toLeet(letter, integer));
+                case EMOJI -> stringBuilder.append(toEmoji(letter));
+                case CAESAR_SHIFT -> stringBuilder.append(toCaesarShift(letter, integer));
+                case FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
+
+            }
+        }
+
+        return stringBuilder.toString();
     }
 
     @Override
@@ -44,7 +66,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
     @Override
     public String toFuckery(Letter letter) {
-        return null;
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     /*

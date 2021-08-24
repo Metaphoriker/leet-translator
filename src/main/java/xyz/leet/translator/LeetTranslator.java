@@ -5,7 +5,7 @@ import xyz.leet.translator.enums.Letter;
 
 public interface LeetTranslator {
 
-    String convert(Letter letter, EncryptionType encryptionType);
+    String convert(String toConvert, EncryptionType encryptionType);
 
     String toLeet(Letter letter, int level);
 
