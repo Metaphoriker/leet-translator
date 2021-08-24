@@ -21,9 +21,8 @@ public class LeetTranslatorImpl implements LeetTranslator {
             case LEET_LEVEL_1 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 1), encryptionType);
             case LEET_LEVEL_2 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 2), encryptionType);
             case LEET_LEVEL_3 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 3), encryptionType);
-            case EMOJI -> addEncryptionCode(loopThroughString(toConvert, encryptionType, -1), encryptionType);
+            case EMOJI, FUCKERY -> addEncryptionCode(loopThroughString(toConvert, encryptionType, -1), encryptionType);
             case CAESAR_SHIFT -> addEncryptionCode(shift+loopThroughString(toConvert, encryptionType, shift), encryptionType);
-            case FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
         };
     }
 
@@ -41,7 +40,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
                 case LEET_LEVEL_1, LEET_LEVEL_3, LEET_LEVEL_2 -> stringBuilder.append(toLeet(letter, integer));
                 case EMOJI -> stringBuilder.append(toEmoji(letter));
                 case CAESAR_SHIFT -> stringBuilder.append(toCaesarShift(letter, integer));
-                case FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
+                case FUCKERY -> stringBuilder.append(toFuckery(letter));
 
             }
         }
