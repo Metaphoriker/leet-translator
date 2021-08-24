@@ -3,6 +3,7 @@ package xyz.leet.translator.enums;
 import java.util.*;
 import java.util.function.Predicate;
 
+@Deprecated
 public enum LeetLetter {
 
     A("4", "4", "/-\\","R"),
@@ -45,14 +46,14 @@ public enum LeetLetter {
         return fromLeet(s) != DEFAULT;
     }
 
-    public static List<String> getLeetFillers(LeetLevel leetLevel) {
+    public static List<String> getLeetFillers(EncryptionType encryptionType) {
 
         List<String> generics = new ArrayList<>();
 
         for (LeetLetter value : LeetLetter.values()) {
 
             if (value == LeetLetter.DEFAULT) continue;
-            generics.add(value.getLeet(leetLevel));
+            generics.add(value.getLeet(encryptionType));
         }
         generics.sort((string1, string2) -> string2.length() - string1.length());
 
@@ -86,15 +87,15 @@ public enum LeetLetter {
         return this.name();
     }
 
-    public String getLeet(LeetLevel leetLevel) {
+    public String getLeet(EncryptionType encryptionType) {
 
-        return switch (leetLevel) {
+        return switch (encryptionType) {
 
             case LEET_LEVEL_1 -> levelOne;
             case LEET_LEVEL_2 -> levelTwo;
             case LEET_LEVEL_3 -> levelThree;
             case CAESAR_SHIFT -> caesarShift;
-            case DISCORD_EMOJI, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
+            case EMOJI, FUCKERY -> throw new UnsupportedOperationException("Not implemented yet");
         };
     }
 
