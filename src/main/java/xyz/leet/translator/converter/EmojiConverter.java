@@ -45,14 +45,14 @@ public class EmojiConverter {
     }
 
     /**
-     * Converts the given {@param letter} to the Emoji equivalent.
+     * Converts the given letter to the Emoji equivalent.
      */
     public static String convert(Letter letter) {
         return map.get(letter);
     }
 
     /**
-     * Converts the given {@param s} to the Letter equivalent.
+     * Converts the given Emoji String to the Letter equivalent.
      */
     public static Optional<Letter> convert(String s) {
 

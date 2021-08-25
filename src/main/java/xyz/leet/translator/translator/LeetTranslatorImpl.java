@@ -46,14 +46,6 @@ public class LeetTranslatorImpl implements LeetTranslator {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    /*
-     * NOTE: String#startsWith(String) check at the beginning of CaesarShift String for "deshifting"
-     */
-    @Override
-    public Letter toLetter(String string) {
-        return null;
-    }
-
     private String loopThroughString(String s, EncryptionType encryptionType, int integer) {
 
         StringBuilder stringBuilder = new StringBuilder();

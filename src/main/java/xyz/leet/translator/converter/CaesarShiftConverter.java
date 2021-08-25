@@ -10,14 +10,14 @@ public class CaesarShiftConverter {
     private static final String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
     /**
-     * Converts the given {@param letter} to the letter at the position current+{@param shift}.
+     * Converts the given letter to the letter at the position current+shift
      */
     public static String convert(Letter letter, int shift) {
         return letters[correctShift(getIndexOf(letter), shift)];
     }
 
     /**
-     * Converts the given {@param letter} to the letter at the position current-{@param shift}.
+     * Converts the given letter to the letter at the position current-shift
      * @see Letter#valueOf(String)
      */
     public static Letter convert(String shifted, int shift) {

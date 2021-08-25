@@ -47,9 +47,9 @@ public class LeetConverter {
     }
 
     /**
-     * Converts the given {@param letter} to a Leet String in the given Leet {@param level}.
+     * Converts the given letter to a Leet String in the given Leet level
      *
-     * @throws IllegalArgumentException if the {@param level} is higher than 3
+     * @throws IllegalArgumentException if the level is higher than 3
      */
     public static String convert(Letter letter, int level) {
 
@@ -60,7 +60,7 @@ public class LeetConverter {
     }
 
     /**
-     * Converts the given {@param leet} letter to a {@link Letter}
+     * Converts the given Leet letter to a {@link Letter}
      */
     public static Optional<Letter> convert(String leet) {
 
