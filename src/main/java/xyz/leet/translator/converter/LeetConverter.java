@@ -53,10 +53,10 @@ public class LeetConverter {
      */
     public static String convert(Letter letter, int level) {
 
-        if(level >= 3)
+        if(level > 3)
             throw new IllegalArgumentException("Cant be >= 3");
 
-        return map.get(letter)[level];
+        return map.get(letter)[level-1];
     }
 
     /**
