@@ -33,7 +33,11 @@ public class LeetTranslatorImpl implements LeetTranslator {
         for(int i = 0; i < s.length(); i++) {
 
             char current = s.charAt(i);
-            if (!Character.isAlphabetic(current)) continue;
+            if (!Character.isAlphabetic(current)) {
+
+                stringBuilder.append(" ");
+                continue;
+            }
 
             Letter letter = Letter.valueOf(String.valueOf(current).toUpperCase());
 
