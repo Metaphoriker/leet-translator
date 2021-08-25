@@ -1,4 +1,4 @@
-package xyz.leet.translator;
+package xyz.leet.translator.translator;
 
 import xyz.leet.translator.converter.CaesarShiftConverter;
 import xyz.leet.translator.converter.EmojiConverter;

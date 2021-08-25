@@ -1,5 +1,7 @@
-package xyz.leet.translator;
+package xyz.leet.translator.gui;
 
+import xyz.leet.translator.translator.LeetTranslator;
+import xyz.leet.translator.translator.LeetTranslatorImpl;
 import xyz.leet.translator.enums.EncryptionType;
 
 /**
@@ -8,6 +10,8 @@ import xyz.leet.translator.enums.EncryptionType;
  */
 // TODO: Clean up code.
 public class LeetGUI extends javax.swing.JFrame {
+
+    private LeetTranslator leetTranslator;
 
     public LeetGUI() {
         initComponents();
@@ -90,15 +94,17 @@ public class LeetGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    LeetTranslatorImpl lTranslator = new LeetTranslatorImpl();
     private void tButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tButtonActionPerformed
+
         String leetLvl = (String) leetDifficultySelector.getSelectedItem();
-        String tTranslatedInput = lTranslator.convert(tInput.getText(), EncryptionType.valueOf(leetLvl));
+        String tTranslatedInput = leetTranslator.convert(tInput.getText(), EncryptionType.valueOf(leetLvl));
         tOutput.setText(tTranslatedInput);
         System.out.println(tTranslatedInput);
     }//GEN-LAST:event_tButtonActionPerformed
                                       
-    public void buildGUI() {
+    public void buildGUI(LeetTranslator leetTranslator) {
+
+        this.leetTranslator = leetTranslator;
         java.awt.EventQueue.invokeLater(() -> {
             new LeetGUI().setVisible(true);
         });
