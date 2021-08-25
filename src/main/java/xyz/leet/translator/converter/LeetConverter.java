@@ -61,10 +61,6 @@ public class LeetConverter {
 
     /**
      * Converts the given {@param leet} letter to a {@link Letter}
-     *
-     * A Leet {@param level} have to be provided to simplify the translation
-     *
-     * @throws IllegalArgumentException if the {@param level} is higher than 3
      */
     public static Optional<Letter> convert(String leet) {
 
