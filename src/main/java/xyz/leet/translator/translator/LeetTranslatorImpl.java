@@ -26,34 +26,6 @@ public class LeetTranslatorImpl implements LeetTranslator {
         };
     }
 
-    private String loopThroughString(String s, EncryptionType encryptionType, int integer) {
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for(int i = 0; i < s.length(); i++) {
-
-            char current = s.charAt(i);
-            if (!Character.isAlphabetic(current)) {
-
-                stringBuilder.append(" ");
-                continue;
-            }
-
-            Letter letter = Letter.valueOf(String.valueOf(current).toUpperCase());
-
-            switch (encryptionType) {
-
-                case LEET_LEVEL_1, LEET_LEVEL_3, LEET_LEVEL_2 -> stringBuilder.append(toLeet(letter, integer));
-                case EMOJI -> stringBuilder.append(toEmoji(letter));
-                case CAESAR_SHIFT -> stringBuilder.append(toCaesarShift(letter, integer));
-                case FUCKERY -> stringBuilder.append(toFuckery(letter));
-
-            }
-        }
-
-        return stringBuilder.toString();
-    }
-
     @Override
     public String toLeet(Letter letter, int level) {
         return LeetConverter.convert(letter, level);
@@ -80,6 +52,34 @@ public class LeetTranslatorImpl implements LeetTranslator {
     @Override
     public Letter toLetter(String string) {
         return null;
+    }
+
+    private String loopThroughString(String s, EncryptionType encryptionType, int integer) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for(int i = 0; i < s.length(); i++) {
+
+            char current = s.charAt(i);
+            if (!Character.isAlphabetic(current)) {
+
+                stringBuilder.append(current);
+                continue;
+            }
+
+            Letter letter = Letter.valueOf(String.valueOf(current).toUpperCase());
+
+            switch (encryptionType) {
+
+                case LEET_LEVEL_1, LEET_LEVEL_3, LEET_LEVEL_2 -> stringBuilder.append(toLeet(letter, integer));
+                case EMOJI -> stringBuilder.append(toEmoji(letter));
+                case CAESAR_SHIFT -> stringBuilder.append(toCaesarShift(letter, integer));
+                case FUCKERY -> stringBuilder.append(toFuckery(letter));
+
+            }
+        }
+
+        return stringBuilder.toString();
     }
 
 }
