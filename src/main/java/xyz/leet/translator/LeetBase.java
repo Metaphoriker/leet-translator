@@ -19,7 +19,10 @@ public class LeetBase {
         leetgui.buildGUI();
 
         CompletableFuture.supplyAsync(UPDATE_CHECKER::isUpdateAvailable)
-            .thenAccept(b -> JOptionPane.showMessageDialog(leetgui, "An update is available \n http://leet-translator.xyz/", "Update available", JOptionPane.INFORMATION_MESSAGE));
+            .thenAccept(b -> {
+
+                if(b) JOptionPane.showMessageDialog(leetgui, "An update is available \n http://leet-translator.xyz/", "Update available", JOptionPane.INFORMATION_MESSAGE);
+            });
     }
 
 }
