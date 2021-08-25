@@ -33,6 +33,8 @@ public class LeetTranslatorImpl implements LeetTranslator {
         for(int i = 0; i < s.length(); i++) {
 
             char current = s.charAt(i);
+            if (!Character.isAlphabetic(current)) continue;
+
             Letter letter = Letter.valueOf(String.valueOf(current).toUpperCase());
 
             switch (encryptionType) {
