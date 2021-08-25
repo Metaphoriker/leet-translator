@@ -13,7 +13,9 @@ public class LeetGUI extends javax.swing.JFrame {
 
     private LeetTranslator leetTranslator;
 
-    public LeetGUI() {
+    public LeetGUI(LeetTranslator leetTranslator) {
+
+        this.leetTranslator = leetTranslator;
         initComponents();
     }
 
@@ -102,12 +104,9 @@ public class LeetGUI extends javax.swing.JFrame {
         System.out.println(tTranslatedInput);
     }//GEN-LAST:event_tButtonActionPerformed
                                       
-    public void buildGUI(LeetTranslator leetTranslator) {
+    public void buildGUI() {
 
-        this.leetTranslator = leetTranslator;
-        java.awt.EventQueue.invokeLater(() -> {
-            new LeetGUI().setVisible(true);
-        });
+        java.awt.EventQueue.invokeLater(() -> setVisible(true));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

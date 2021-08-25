@@ -10,8 +10,8 @@ public class LeetBase {
 
     public static void main(String[] args) {
 
-        LeetGUI leetgui = new LeetGUI();
-        leetgui.buildGUI(LEET_TRANSLATOR);
+        LeetGUI leetgui = new LeetGUI(LEET_TRANSLATOR);
+        leetgui.buildGUI();
     }
 
 }
