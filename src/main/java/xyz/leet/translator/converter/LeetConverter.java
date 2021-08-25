@@ -53,8 +53,8 @@ public class LeetConverter {
      */
     public static String convert(Letter letter, int level) {
 
-        if(level > 3)
-            throw new IllegalArgumentException("Cant be higher than 3");
+        if(level >= 3)
+            throw new IllegalArgumentException("Cant be >= 3");
 
         return map.get(letter)[level];
     }
@@ -66,10 +66,7 @@ public class LeetConverter {
      *
      * @throws IllegalArgumentException if the {@param level} is higher than 3
      */
-    public static Optional<Letter> convert(String leet, int level) {
-
-        if(level > 3)
-            throw new IllegalArgumentException("Cant be higher than 3");
+    public static Optional<Letter> convert(String leet) {
 
         for(Map.Entry<Letter, String[]> entry : map.entrySet()) {
 

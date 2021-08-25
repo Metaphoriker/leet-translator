@@ -5,8 +5,8 @@ import xyz.leet.translator.converter.EmojiConverter;
 import xyz.leet.translator.converter.LeetConverter;
 import xyz.leet.translator.enums.EncryptionType;
 import xyz.leet.translator.enums.Letter;
+import xyz.leet.translator.utils.EncryptionUtil;
 
-import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class LeetTranslatorImpl implements LeetTranslator {
@@ -18,11 +18,11 @@ public class LeetTranslatorImpl implements LeetTranslator {
         int shift = ThreadLocalRandom.current().nextInt(5)+1;
         return switch (encryptionType) {
 
-            case LEET_LEVEL_1 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 1), encryptionType);
-            case LEET_LEVEL_2 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 2), encryptionType);
-            case LEET_LEVEL_3 -> addEncryptionCode(loopThroughString(toConvert, encryptionType, 3), encryptionType);
-            case EMOJI, FUCKERY -> addEncryptionCode(loopThroughString(toConvert, encryptionType, -1), encryptionType);
-            case CAESAR_SHIFT -> addEncryptionCode(shift+loopThroughString(toConvert, encryptionType, shift), encryptionType);
+            case LEET_LEVEL_1 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 1), encryptionType);
+            case LEET_LEVEL_2 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 2), encryptionType);
+            case LEET_LEVEL_3 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 3), encryptionType);
+            case EMOJI, FUCKERY -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, -1), encryptionType);
+            case CAESAR_SHIFT -> EncryptionUtil.appendEncryptionCode(shift+loopThroughString(toConvert, encryptionType, shift), encryptionType);
         };
     }
 
@@ -76,23 +76,4 @@ public class LeetTranslatorImpl implements LeetTranslator {
         return null;
     }
 
-    private String addEncryptionCode(String s, EncryptionType encryptionType) {
-        return s + encryptionType.getEncryptionCode();
-    }
-
-    private String getWithoutEncrytpionCode(String s) {
-
-        Optional<EncryptionType> leetLevel = this.getEncryption(s);
-        return s.substring(0, s.length() - leetLevel.get().getEncryptionCode().length());
-    }
-
-    private Optional<EncryptionType> getEncryption(String s) {
-
-        for(EncryptionType encryptionType : EncryptionType.values()) {
-
-            if(s.endsWith(encryptionType.getEncryptionCode()))
-                return Optional.of(encryptionType);
-        }
-        return Optional.empty();
-    }
 }
