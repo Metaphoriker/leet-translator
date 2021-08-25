@@ -1,8 +1,11 @@
 package xyz.leet.translator.gui;
 
+import xyz.leet.translator.enums.Letter;
 import xyz.leet.translator.translator.LeetTranslator;
 import xyz.leet.translator.translator.LeetTranslatorImpl;
 import xyz.leet.translator.enums.EncryptionType;
+
+import java.util.Arrays;
 
 /**
  * GUI for Leet Translator
@@ -36,7 +39,11 @@ public class LeetGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        leetDifficultySelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEET_LEVEL_1", "LEET_LEVEL_2", "LEET_LEVEL_3", "FUCKERY", "CAESAR_SHIFT", "EMOJI" }));
+        String[] letterNames = new String[Letter.values().length];
+        for(int i = 0; i < letterNames.length-1; i++)
+            letterNames[i] = Letter.values()[i].name();
+
+        leetDifficultySelector.setModel(new javax.swing.DefaultComboBoxModel<>(letterNames));
 
         tButton.setText("Translate");
         tButton.addActionListener(new java.awt.event.ActionListener() {
