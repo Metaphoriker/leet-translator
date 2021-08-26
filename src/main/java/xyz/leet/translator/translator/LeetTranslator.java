@@ -11,6 +11,11 @@ public interface LeetTranslator {
     String convert(String toConvert, EncryptionType encryptionType);
 
     /**
+     * Returns the given encrypted String decrypted
+     */
+    String convertToNormal(String toConvert);
+
+    /**
      * Returns the given Letter converted to a Leet String with the given level
      */
     String toLeet(Letter letter, int level);
