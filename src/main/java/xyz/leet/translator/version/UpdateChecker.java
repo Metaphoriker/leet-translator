@@ -30,7 +30,7 @@ public class UpdateChecker {
         instantiateVersionFile(resource);
     }
 
-    public boolean isUpdateAvailable() {
+    public UpdateCheckerResult isUpdateAvailable() {
 
         HttpURLConnection connection = null;
         String currentVersion;
@@ -46,14 +46,14 @@ public class UpdateChecker {
         } catch (Exception e) {
 
             e.printStackTrace();
-            return false;
+            return new UpdateCheckerResult(null, null, false);
         } finally {
 
             if(connection != null)
                 connection.disconnect();
         }
 
-        return !latestVersion.equals(currentVersion);
+        return new UpdateCheckerResult(currentVersion, latestVersion, !latestVersion.equals(currentVersion));
     }
 
     private void instantiateVersionFile(URL resource) {
