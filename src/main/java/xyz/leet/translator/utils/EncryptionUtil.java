@@ -20,6 +20,8 @@ public class EncryptionUtil {
 
         for(EncryptionType encryptionType : EncryptionType.values()) {
 
+            if(encryptionType == EncryptionType.DECODE) continue;
+
             if(s.endsWith(encryptionType.getEncryptionCode()))
                 return Optional.of(encryptionType);
         }

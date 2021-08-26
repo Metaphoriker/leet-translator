@@ -33,7 +33,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
     public String convertToNormal(String toConvert) {
 
         Optional<EncryptionType> encryptionTypeOptional = EncryptionUtil.getEncryption(toConvert);
-        if(!encryptionTypeOptional.isPresent()) return toConvert;
+        if(encryptionTypeOptional.isEmpty()) return toConvert;
 
         EncryptionType encryptionType = encryptionTypeOptional.get();
 
@@ -64,6 +64,14 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
         StringBuilder stringBuilder = new StringBuilder();
 
+        s = s.replace(encryptionType.getEncryptionCode(), "");
+        int shift = 0;
+        if(encryptionType == EncryptionType.CAESAR_SHIFT) {
+
+            shift = Integer.parseInt(s.split("_")[0]);
+            s = s.replace(shift + "_", "");
+        }
+
         for(int i = 0; i < s.length(); i++) {
 
             char current = s.charAt(i);
@@ -81,7 +89,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
                     Optional<Letter> letterOptional = EmojiConverter.convert(currentS);
                     stringBuilder.append(letterOptional.isPresent() ? letterOptional.get() : currentS);
                 }
-                case CAESAR_SHIFT -> stringBuilder.append(CaesarShiftConverter.convert(currentS, Integer.parseInt(currentS.split("_")[0])));
+                case CAESAR_SHIFT -> stringBuilder.append(CaesarShiftConverter.convert(currentS, shift));
                 case FUCKERY -> throw new UnsupportedOperationException("Not yet supported");
             }
         }
