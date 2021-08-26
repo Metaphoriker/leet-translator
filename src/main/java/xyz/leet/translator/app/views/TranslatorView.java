@@ -33,6 +33,9 @@ public class TranslatorView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        textArea.setEditable(false);
+        comboBox.setValue(EncryptionType.LEET_LEVEL_1);
         comboBox.setItems(encryptionTypeList());
     }
 

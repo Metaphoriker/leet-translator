@@ -35,6 +35,7 @@ public class LeetController {
 
         stage.setScene(scene);
         stage.setTitle(title);
+        stage.setResizable(false);
         stage.show();
     }
 
