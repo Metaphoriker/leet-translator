@@ -18,12 +18,12 @@ public class LeetBase {
         CompletableFuture.supplyAsync(UPDATE_CHECKER::isUpdateAvailable)
             .thenAccept(result -> {
 
-                if(result.updateAvailable) {
+                if(result.updateAvailable()) {
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Update available");
                     alert.setHeaderText("http://leet-translator.xyz/");
-                    alert.setContentText("Current: " + result.oldVersion + " | Newest: " + result.newVersion);
+                    alert.setContentText("Current: " + result.oldVersion() + " | Newest: " + result.newVersion());
                     alert.showAndWait();
                 }
             });
