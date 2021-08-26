@@ -20,6 +20,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
         int shift = ThreadLocalRandom.current().nextInt(5)+1;
         return switch (encryptionType) {
 
+            case DECODE -> convertToNormal(toConvert);
             case LEET_LEVEL_1 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 1), encryptionType);
             case LEET_LEVEL_2 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 2), encryptionType);
             case LEET_LEVEL_3 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 3), encryptionType);

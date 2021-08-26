@@ -2,6 +2,7 @@ package xyz.leet.translator.enums;
 
 public enum EncryptionType {
 
+    DECODE(""),
     LEET_LEVEL_1("_L1"),
     LEET_LEVEL_2("_L2"),
     LEET_LEVEL_3("_L3"),
