@@ -2,6 +2,8 @@ package xyz.leet.translator.converter;
 
 import xyz.leet.translator.enums.Letter;
 
+import java.util.Optional;
+
 public class CaesarShiftConverter {
 
     /*
@@ -20,8 +22,16 @@ public class CaesarShiftConverter {
      * Converts the given letter to the letter at the position current-shift
      * @see Letter#valueOf(String)
      */
-    public static Letter convert(String shifted, int shift) {
-        return Letter.valueOf(letters[correctBackShift(getIndexOf(Letter.valueOf(shifted.toUpperCase())), shift)]);
+    public static Optional<Letter> convert(String shifted, int shift) {
+
+        Letter letter;
+        try {
+            letter = Letter.valueOf(letters[correctBackShift(getIndexOf(Letter.valueOf(shifted.toUpperCase())), shift)]);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+
+        return Optional.of(letter);
     }
 
     /*

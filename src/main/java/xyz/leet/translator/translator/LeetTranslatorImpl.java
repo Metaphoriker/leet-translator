@@ -37,7 +37,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
         EncryptionType encryptionType = encryptionTypeOptional.get();
 
-        return loopThroughString(toConvert, encryptionType);
+        return loopThroughString(toConvert.replace(encryptionType.getEncryptionCode(), ""), encryptionType);
     }
 
     @Override
@@ -64,7 +64,6 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        s = s.replace(encryptionType.getEncryptionCode(), "");
         int shift = 0;
         if(encryptionType == EncryptionType.CAESAR_SHIFT) {
 
@@ -79,22 +78,18 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
             switch (encryptionType) {
 
-                case LEET_LEVEL_1, LEET_LEVEL_2, LEET_LEVEL_3 -> {
-
-                    Optional<Letter> letterOptional = LeetConverter.convert(currentS);
-                    stringBuilder.append(letterOptional.isPresent() ? letterOptional.get() : currentS);
-                }
-                case EMOJI -> {
-
-                    Optional<Letter> letterOptional = EmojiConverter.convert(currentS);
-                    stringBuilder.append(letterOptional.isPresent() ? letterOptional.get() : currentS);
-                }
-                case CAESAR_SHIFT -> stringBuilder.append(CaesarShiftConverter.convert(currentS, shift));
+                case LEET_LEVEL_1, LEET_LEVEL_2, LEET_LEVEL_3 -> appendToStringBuilder(stringBuilder, LeetConverter.convert(currentS), currentS);
+                case EMOJI -> appendToStringBuilder(stringBuilder, EmojiConverter.convert(currentS), currentS);
+                case CAESAR_SHIFT -> appendToStringBuilder(stringBuilder, CaesarShiftConverter.convert(currentS, shift), currentS);
                 case FUCKERY -> throw new UnsupportedOperationException("Not yet supported");
             }
         }
 
         return stringBuilder.toString();
+    }
+
+    private void appendToStringBuilder(StringBuilder stringBuilder, Optional<Letter> letterOptional, String currentS) {
+        stringBuilder.append(letterOptional.isPresent() ? letterOptional.get() : currentS);
     }
 
     private String loopThroughString(String s, EncryptionType encryptionType, int integer) {
