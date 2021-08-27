@@ -23,10 +23,10 @@ public class TranslatorView implements Initializable {
     }
 
     @FXML
-    private TextArea textArea;
+    private TextArea textInput;
 
     @FXML
-    private TextField textField;
+    private TextArea textOutput;
 
     @FXML
     private ComboBox<EncryptionType> comboBox;
@@ -34,14 +34,17 @@ public class TranslatorView implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        textArea.setEditable(false);
+        textInput.setEditable(true);
+        textInput.setWrapText(true);
+        textOutput.setEditable(false);
+        textOutput.setWrapText(true);
         comboBox.setValue(EncryptionType.LEET_LEVEL_1);
         comboBox.setItems(encryptionTypeList());
     }
 
     @FXML
     public void onButtonPress(ActionEvent actionEvent) {
-        textArea.setText(translatorViewModel.translate(textField.getText(), comboBox.getValue()));
+        textOutput.setText(translatorViewModel.translate(textInput.getText(), comboBox.getValue()));
     }
 
     private ObservableList<EncryptionType> encryptionTypeList() {
