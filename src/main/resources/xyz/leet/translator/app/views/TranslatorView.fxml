@@ -8,16 +8,16 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="xyz.leet.translator.app.views.TranslatorView">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xyz.leet.translator.app.views.TranslatorView">
   <tabs>
     <Tab text="Translator">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                   <Button fx:id="translateButton" layoutX="305.0" layoutY="335.0" mnemonicParsing="false" onAction="#onButtonPress" text="Translate" prefWidth="115.0"/>
-                   <TextArea fx:id="textInput" layoutX="8.0" layoutY="8.0" prefHeight="325.0" prefWidth="262.0"/>
-                   <TextArea fx:id="textOutput" layoutX="326.0" layoutY="8.0" prefHeight="325.0" prefWidth="262.0" />
-                   <ComboBox fx:id="comboBox" layoutX="180.0" layoutY="335.0" prefHeight="25.0" prefWidth="115.0" />
+                   <Button fx:id="translateButton" layoutX="473.0" layoutY="335.0" mnemonicParsing="false" onAction="#onButtonPress" prefWidth="115.0" text="Translate" />
+                   <TextArea fx:id="textInput" layoutX="8.0" layoutY="8.0" prefHeight="325.0" prefWidth="262.0" promptText="To translated text...." />
+                   <TextArea fx:id="textOutput" layoutX="326.0" layoutY="8.0" prefHeight="325.0" prefWidth="262.0" promptText="Translated text...." />
+                   <ComboBox fx:id="comboBox" layoutX="155.0" layoutY="335.0" prefHeight="25.0" prefWidth="115.0" />
                </children></AnchorPane>
       </content>
     </Tab>
