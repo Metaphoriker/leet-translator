@@ -2,10 +2,7 @@ package xyz.leet.translator.converter;
 
 import xyz.leet.translator.enums.Letter;
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 public class LeetConverter {
 
@@ -14,7 +11,7 @@ public class LeetConverter {
      *
      * There are no null values and the length of the Array is fixed at 3.
      */
-    private static final SortedMap<Letter, String[]> map = new TreeMap<>();
+    public static final SortedMap<Letter, String[]> map = new TreeMap<>();
 
     static {
 
@@ -74,6 +71,18 @@ public class LeetConverter {
         }
 
         return Optional.empty();
+    }
+
+    public static List<String> getLeetFillers(int level) {
+
+        List<String> generics = new ArrayList<>();
+
+        for (Letter letter : Letter.values()) {
+            generics.add(map.get(letter)[level]);
+        }
+        generics.sort((string1, string2) -> string2.length() - string1.length());
+
+        return generics;
     }
 
 }
