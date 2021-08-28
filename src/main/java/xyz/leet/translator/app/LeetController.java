@@ -1,9 +1,12 @@
 package xyz.leet.translator.app;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import xyz.leet.translator.app.views.TranslatorView;
 import xyz.leet.translator.app.views.TranslatorViewModel;
@@ -33,6 +36,7 @@ public class LeetController {
         Parent root = loadView(clazz, controllerFactory);
         Scene scene = new Scene(root);
 
+        stage.getIcons().addAll(new Image("leet.png"));
         stage.setScene(scene);
         stage.setTitle(title);
         stage.setResizable(false);

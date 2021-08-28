@@ -1,6 +1,5 @@
 package xyz.leet.translator.translator;
 
-import xyz.leet.translator.app.LeetController;
 import xyz.leet.translator.converter.CaesarShiftConverter;
 import xyz.leet.translator.converter.EmojiConverter;
 import xyz.leet.translator.converter.LeetConverter;
