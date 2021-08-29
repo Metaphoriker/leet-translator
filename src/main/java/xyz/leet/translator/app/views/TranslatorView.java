@@ -9,10 +9,7 @@ import javafx.scene.control.*;
 import xyz.leet.translator.enums.EncryptionType;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class TranslatorView implements Initializable {
 
@@ -38,8 +35,8 @@ public class TranslatorView implements Initializable {
         textInput.setWrapText(true);
         textOutput.setEditable(false);
         textOutput.setWrapText(true);
-        comboBox.setValue(EncryptionType.LEET_LEVEL_1);
         comboBox.setItems(encryptionTypeList());
+        comboBox.setValue(comboBox.getItems().get(0));
     }
 
     @FXML
@@ -50,7 +47,9 @@ public class TranslatorView implements Initializable {
     private ObservableList<EncryptionType> encryptionTypeList() {
 
         List<EncryptionType> list = new ArrayList<>();
+
         Collections.addAll(list, EncryptionType.values());
+        list.sort(Comparator.comparing(Enum::name));
 
         return FXCollections.observableArrayList(list);
     }
