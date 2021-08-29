@@ -81,8 +81,11 @@ public class LeetTranslatorImpl implements LeetTranslator {
                     case LEET_LEVEL_3 -> index = 2;
                 }
 
-                for (String leet : LeetConverter.getLeetFillers(index))
-                    s = s.replace(leet, LeetConverter.convert(leet).get().name());
+                for (String leet : LeetConverter.getLeetFillers(index)) {
+
+                    Optional<Letter> optionalLetter = LeetConverter.convert(leet);
+                    s = s.replace(leet, optionalLetter.map(Enum::name).orElse(""));
+                }
 
                 stringBuilder.append(s);
             }

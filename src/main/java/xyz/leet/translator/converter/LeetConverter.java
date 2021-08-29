@@ -77,9 +77,9 @@ public class LeetConverter {
 
         List<String> generics = new ArrayList<>();
 
-        for (Letter letter : Letter.values()) {
+        for (Letter letter : Letter.values())
             generics.add(map.get(letter)[level]);
-        }
+
         generics.sort((string1, string2) -> string2.length() - string1.length());
 
         return generics;
