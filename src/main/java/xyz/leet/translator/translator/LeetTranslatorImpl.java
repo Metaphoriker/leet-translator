@@ -73,20 +73,26 @@ public class LeetTranslatorImpl implements LeetTranslator {
         switch (encryptionType) {
 
             case LEET_LEVEL_1, LEET_LEVEL_2, LEET_LEVEL_3 -> {
+
                 int index = 0;
                 switch (encryptionType) {
+
                     case LEET_LEVEL_2 -> index = 1;
                     case LEET_LEVEL_3 -> index = 2;
                 }
-                for (String leet : LeetConverter.getLeetFillers(index)) {
+
+                for (String leet : LeetConverter.getLeetFillers(index))
                     s = s.replace(leet, LeetConverter.convert(leet).get().name());
-                }
+
                 stringBuilder.append(s);
             }
             case EMOJI, CAESAR_SHIFT, FUCKERY -> {
+
                 for(int i = 0; i < s.length(); i++) {
+
                     String currentS = String.valueOf(s.charAt(i));
                     switch (encryptionType) {
+
                         case EMOJI -> appendToStringBuilder(stringBuilder, EmojiConverter.convert(currentS), currentS);
                         case CAESAR_SHIFT -> appendToStringBuilder(stringBuilder, CaesarShiftConverter.convert(currentS, shift), currentS);
                         case FUCKERY -> throw new UnsupportedOperationException("Not yet supported");
