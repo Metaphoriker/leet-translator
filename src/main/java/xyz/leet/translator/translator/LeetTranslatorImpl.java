@@ -99,16 +99,19 @@ public class LeetTranslatorImpl implements LeetTranslator {
                 stringBuilder.append(s);
             }
 
-            case EMOJI, CAESAR_SHIFT -> {
+            case EMOJI -> {
+                for (String leet : EmojiConverter.getEmojiFillers()) {
+                    Optional<Letter> optionalLetter = EmojiConverter.convert(leet);
+                    s = s.replace(leet, optionalLetter.map(Enum::name).orElse(""));
+                }
+                stringBuilder.append(s);
+            }
+
+            case CAESAR_SHIFT -> {
 
                 for(int i = 0; i < s.length(); i++) {
-
                     String currentS = String.valueOf(s.charAt(i));
-                    switch (encryptionType) {
-
-                        case EMOJI -> appendToStringBuilder(stringBuilder, EmojiConverter.convert(currentS), currentS);
-                        case CAESAR_SHIFT -> appendToStringBuilder(stringBuilder, CaesarShiftConverter.convert(currentS, shift), currentS);
-                    }
+                    appendToStringBuilder(stringBuilder, CaesarShiftConverter.convert(currentS, shift), currentS);
                 }
             }
         }

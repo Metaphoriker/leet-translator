@@ -2,46 +2,43 @@ package xyz.leet.translator.converter;
 
 import xyz.leet.translator.enums.Letter;
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 public class EmojiConverter {
 
     /*
      * This SortedMap contains every Letter with their Emoji equivalent.
      */
-    private static final SortedMap<Letter, String> map = new TreeMap<>();
+    private static final Map<Letter, String> map = new HashMap<>();
 
     static {
 
-        map.put(Letter.A, "\uD83D\uDCC8");
-        map.put(Letter.B, "\uD83C\uDFD6");
-        map.put(Letter.C, "\uD83D\uDC40");
-        map.put(Letter.D, "\uD83E\uDD41");
-        map.put(Letter.E, "\uD83D\uDC41");
-        map.put(Letter.F, "\uD83D\uDE28");
-        map.put(Letter.G, "⚙");
-        map.put(Letter.H, "\uD83C\uDFA9");
-        map.put(Letter.I, "❄");
-        map.put(Letter.J, "\uD83C\uDCCF");
-        map.put(Letter.K, "\uD83D\uDD11");
-        map.put(Letter.L, "♥");
-        map.put(Letter.M, "\uD83D\uDD0D");
-        map.put(Letter.N, "\uD83D\uDCDD");
-        map.put(Letter.O, "\uD83D\uDC19");
-        map.put(Letter.P, "\uD83D\uDC26");
-        map.put(Letter.Q, "\uD83D\uDC78");
-        map.put(Letter.R, "\uD83D\uDC07");
-        map.put(Letter.S, "\uD83D\uDD0C");
-        map.put(Letter.T, "\uD83D\uDE82");
-        map.put(Letter.U, "☂");
-        map.put(Letter.V, "⚱");
-        map.put(Letter.W, "\uD83D\uDEBA");
-        map.put(Letter.X, "\uD83C\uDF84");
-        map.put(Letter.Y, "\uD83D\uDEE5");
-        map.put(Letter.Z, "\uD83D\uDC05");
+        map.put(Letter.A, ":chart_with_upwards_trend:");
+        map.put(Letter.B, ":beach:");
+        map.put(Letter.C, ":eyes:");
+        map.put(Letter.D, ":drum:");
+        map.put(Letter.E, ":eye:");
+        map.put(Letter.F, ":fearful:");
+        map.put(Letter.G, ":gear:");
+        map.put(Letter.H, ":tophat:");
+        map.put(Letter.I, ":snowflake:");
+        map.put(Letter.J, ":black_joker:");
+        map.put(Letter.K, ":key:");
+        map.put(Letter.L, ":hearts:");
+        map.put(Letter.M, ":mag:");
+        map.put(Letter.N, ":pencil:");
+        map.put(Letter.O, ":octopus:");
+        map.put(Letter.P, ":bird:");
+        map.put(Letter.Q, ":princess:");
+        map.put(Letter.R, ":rabbit2:");
+        map.put(Letter.S, ":electric_plug:");
+        map.put(Letter.T, ":steam_locomotive:");
+        map.put(Letter.U, ":umbrella2:");
+        map.put(Letter.V, ":urn:");
+        map.put(Letter.W, ":womens:");
+        map.put(Letter.X, ":christmas_tree:");
+        map.put(Letter.Y, ":motorboat:");
+        map.put(Letter.Z, ":tiger2:");
     }
 
     /**
@@ -63,6 +60,18 @@ public class EmojiConverter {
         }
 
         return Optional.empty();
+    }
+
+    public static List<String> getEmojiFillers() {
+
+        List<String> generics = new ArrayList<>();
+
+        for (Letter letter : Letter.values())
+            generics.add(map.get(letter));
+
+        generics.sort((string1, string2) -> string2.length() - string1.length());
+
+        return generics;
     }
 
 }
