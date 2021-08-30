@@ -2,6 +2,7 @@ package xyz.leet.translator.translator;
 
 import xyz.leet.translator.converter.CaesarShiftConverter;
 import xyz.leet.translator.converter.EmojiConverter;
+import xyz.leet.translator.converter.FuckeryConverter;
 import xyz.leet.translator.converter.LeetConverter;
 import xyz.leet.translator.enums.EncryptionType;
 import xyz.leet.translator.enums.Letter;
@@ -56,7 +57,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
     @Override
     public String toFuckery(Letter letter) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return FuckeryConverter.convert(letter);
     }
 
     private String loopThroughString(String s, EncryptionType encryptionType) {
@@ -89,7 +90,16 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
                 stringBuilder.append(s);
             }
-            case EMOJI, CAESAR_SHIFT, FUCKERY -> {
+
+            case FUCKERY -> {
+                for (String leet : FuckeryConverter.getFuckeryFillers()) {
+                    Optional<Letter> optionalLetter = FuckeryConverter.convert(leet);
+                    s = s.replace(leet, optionalLetter.map(Enum::name).orElse(""));
+                }
+                stringBuilder.append(s);
+            }
+
+            case EMOJI, CAESAR_SHIFT -> {
 
                 for(int i = 0; i < s.length(); i++) {
 
@@ -98,7 +108,6 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
                         case EMOJI -> appendToStringBuilder(stringBuilder, EmojiConverter.convert(currentS), currentS);
                         case CAESAR_SHIFT -> appendToStringBuilder(stringBuilder, CaesarShiftConverter.convert(currentS, shift), currentS);
-                        case FUCKERY -> throw new UnsupportedOperationException("Not yet supported");
                     }
                 }
             }
