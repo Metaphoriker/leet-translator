@@ -6,7 +6,7 @@ import xyz.leet.translator.translator.LeetTranslator;
 import xyz.leet.translator.translator.LeetTranslatorImpl;
 
 /**
- * GUI for Leet Translator
+ * Starter for the UI
  */
 public class LeetApp extends Application {
 

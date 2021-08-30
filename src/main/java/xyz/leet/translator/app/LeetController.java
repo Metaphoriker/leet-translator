@@ -1,12 +1,10 @@
 package xyz.leet.translator.app;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import xyz.leet.translator.app.views.TranslatorView;
 import xyz.leet.translator.app.views.TranslatorViewModel;
@@ -16,6 +14,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
 
+/**
+ * Central point of contact for loading, opening and connecting Views with its ViewModel.
+ */
 public class LeetController {
 
     private final LeetTranslator leetTranslator;

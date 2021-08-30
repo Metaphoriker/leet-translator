@@ -30,7 +30,7 @@ public interface LeetTranslator {
      */
     String toEmoji(Letter letter);
 
-    /**
+    /*
      * TODO
      */
     String toFuckery(Letter letter);

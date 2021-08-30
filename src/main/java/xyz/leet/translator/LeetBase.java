@@ -7,6 +7,9 @@ import xyz.leet.translator.version.UpdateChecker;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Mighty MAIN
+ */
 public class LeetBase {
 
     private static final UpdateChecker UPDATE_CHECKER = new UpdateChecker();

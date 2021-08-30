@@ -11,6 +11,9 @@ import xyz.leet.translator.enums.EncryptionType;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Leet-Translator view which represents the Translator visually.
+ */
 public class TranslatorView implements Initializable {
 
     private final TranslatorViewModel translatorViewModel;
