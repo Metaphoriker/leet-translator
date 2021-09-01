@@ -24,7 +24,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
             case LEET_LEVEL_1 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 1), encryptionType);
             case LEET_LEVEL_2 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 2), encryptionType);
             case LEET_LEVEL_3 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 3), encryptionType);
-            case EMOJI, FUCKERY -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, -1), encryptionType);
+            case DISCORD_EMOJI, FUCKERY -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, -1), encryptionType);
             case CAESAR_SHIFT -> EncryptionUtil.appendEncryptionCode(shift + "_" +loopThroughString(toConvert, encryptionType, shift), encryptionType);
         };
     }
@@ -99,7 +99,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
                 stringBuilder.append(s);
             }
 
-            case EMOJI -> {
+            case DISCORD_EMOJI -> {
                 for (String leet : EmojiConverter.getEmojiFillers()) {
                     Optional<Letter> optionalLetter = EmojiConverter.convert(leet);
                     s = s.replace(leet, optionalLetter.map(Enum::name).orElse(""));
@@ -141,7 +141,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
             switch (encryptionType) {
 
                 case LEET_LEVEL_1, LEET_LEVEL_3, LEET_LEVEL_2 -> stringBuilder.append(toLeet(letter, integer));
-                case EMOJI -> stringBuilder.append(toEmoji(letter));
+                case DISCORD_EMOJI -> stringBuilder.append(toEmoji(letter));
                 case CAESAR_SHIFT -> stringBuilder.append(toCaesarShift(letter, integer));
                 case FUCKERY -> stringBuilder.append(toFuckery(letter));
 
