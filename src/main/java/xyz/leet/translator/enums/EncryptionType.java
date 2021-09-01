@@ -6,9 +6,9 @@ public enum EncryptionType {
     LEET_LEVEL_1("_L1"),
     LEET_LEVEL_2("_L2"),
     LEET_LEVEL_3("_L3"),
+    DISCORD_EMOJI("_E"),
     CAESAR_SHIFT("_CS"),
-    FUCKERY("_F"),
-    EMOJI("_E");
+    FUCKERY("_F");
 
     private final String encryptionCode;
 
