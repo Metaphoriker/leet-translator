@@ -13,7 +13,7 @@ public class EncryptionUtil {
     public static String withoutEncryptionCode(String s) {
 
         Optional<EncryptionType> leetLevel = getEncryption(s);
-        return s.substring(0, s.length() - leetLevel.get().getEncryptionCode().length());
+        return leetLevel.map(encryptionType -> s.substring(0, s.length() - encryptionType.getEncryptionCode().length())).orElse(s);
     }
 
     public static Optional<EncryptionType> getEncryption(String s) {
