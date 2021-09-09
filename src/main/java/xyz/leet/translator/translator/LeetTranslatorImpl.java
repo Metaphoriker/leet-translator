@@ -25,6 +25,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
             case LEET_LEVEL_3 -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, 3), encryptionType);
             case DISCORD_EMOJI, FUCKERY -> EncryptionUtil.appendEncryptionCode(loopThroughString(toConvert, encryptionType, -1), encryptionType);
             case CAESAR_SHIFT -> EncryptionUtil.appendEncryptionCode(shift + "_" +loopThroughString(toConvert, encryptionType, shift), encryptionType);
+            default -> throw new IllegalArgumentException("Untreated enum expression");
         };
     }
 
@@ -113,6 +114,8 @@ public class LeetTranslatorImpl implements LeetTranslator {
                     appendToStringBuilder(stringBuilder, CaesarShiftConverter.convert(currentS, shift), currentS);
                 }
             }
+
+            default -> throw new IllegalArgumentException("Untreated enum expression");
         }
 
         return stringBuilder.toString();
@@ -143,6 +146,7 @@ public class LeetTranslatorImpl implements LeetTranslator {
                 case DISCORD_EMOJI -> stringBuilder.append(toEmoji(letter));
                 case CAESAR_SHIFT -> stringBuilder.append(toCaesarShift(letter, integer));
                 case FUCKERY -> stringBuilder.append(toFuckery(letter));
+                default -> throw new IllegalArgumentException("Untreated enum expression");
 
             }
         }
