@@ -1,5 +1,7 @@
 package xyz.leet.translator.version;
 
+import javafx.scene.control.Alert;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
@@ -18,12 +20,8 @@ public class UpdateChecker {
         URL resource = getClass().getClassLoader().getResource("xyz/leet/translator/version.txt");
 
         if(resource == null) {
-
-            try {
-                throw new FileNotFoundException("Either the File got deleted or the repo is not public");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            
+            error("JAR is corrupted. Please reinstall or try again");
             return;
         }
 
@@ -44,8 +42,8 @@ public class UpdateChecker {
             currentVersion = Files.readString(Path.of(versionFile.toURI()));
             latestVersion = new BufferedReader(new InputStreamReader(connection.getInputStream())).readLine();
         } catch (Exception e) {
-
-            e.printStackTrace();
+            
+            error("Could not resolve connection to GitHub repository");
             return new UpdateCheckerResult(null, null, false);
         } finally {
 
@@ -63,6 +61,14 @@ public class UpdateChecker {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+    
+    private void error(String msg) {
+    
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("AN ERROR OCCURRED");
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
 }
