@@ -53,7 +53,7 @@ public class UpdateChecker {
                 connection.disconnect();
         }
 
-        return new UpdateCheckerResult(currentVersion, latestVersion, !latestVersion.equals(currentVersion));
+        return new UpdateCheckerResult(latestVersion, currentVersion, !latestVersion.equals(currentVersion));
     }
 
     private void instantiateVersionFile(URL resource) {
