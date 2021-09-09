@@ -12,25 +12,7 @@ import java.util.concurrent.CompletableFuture;
  */
 public class LeetBase {
 
-    private static final UpdateChecker UPDATE_CHECKER = new UpdateChecker();
-
     public static void main(String[] args) {
-
-        CompletableFuture.supplyAsync(UPDATE_CHECKER::isUpdateAvailable)
-            .thenAccept(result -> {
-
-                if(result.updateAvailable()) {
-
-                    System.out.println("Update is Needed");
-
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Update available");
-                    alert.setHeaderText("http://leet-translator.xyz/");
-                    alert.setContentText("Current: " + result.oldVersion() + " | Newest: " + result.newVersion());
-                    alert.showAndWait();
-                }
-            });
-
         Application.launch(LeetApp.class, args);
     }
 

@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import xyz.leet.translator.app.views.LoadingView;
 import xyz.leet.translator.app.views.TranslatorView;
 import xyz.leet.translator.app.views.TranslatorViewModel;
 import xyz.leet.translator.translator.LeetTranslator;
@@ -30,6 +31,14 @@ public class LeetController {
 
     public void showTranslatorView() {
         loadAndShowView(TranslatorView.class, (Class<?> param) -> new TranslatorView(new TranslatorViewModel(leetTranslator)), "Leet-Translator");
+    }
+    
+    public void showLoadingView() {
+        loadAndShowView(LoadingView.class, (Class<?> param) -> new LoadingView(), "Loading...");
+    }
+    
+    public void closeLatestView() {
+        stage.close();
     }
 
     private <T> void loadAndShowView(Class<T> clazz, Callback<Class<?>, Object> controllerFactory, String title) {

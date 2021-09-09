@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="245.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xyz.leet.translator.app.views.LoadingView">
+   <children>
+      <TilePane prefHeight="207.0" prefWidth="170.0">
+         <children>
+            <ImageView fx:id="gifImageView" fitHeight="223.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </TilePane>
+   </children>
+</Pane>
