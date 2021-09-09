@@ -71,4 +71,6 @@ public class FuckeryConverter {
 
         return generics;
     }
+    
+    private FuckeryConverter() {}
 }

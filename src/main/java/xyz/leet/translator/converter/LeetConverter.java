@@ -84,5 +84,7 @@ public class LeetConverter {
 
         return generics;
     }
+    
+    private LeetConverter() {}
 
 }

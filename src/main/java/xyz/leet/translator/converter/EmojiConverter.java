@@ -73,5 +73,7 @@ public class EmojiConverter {
 
         return generics;
     }
+    
+    private EmojiConverter() {}
 
 }

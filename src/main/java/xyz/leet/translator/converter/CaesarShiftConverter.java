@@ -62,4 +62,6 @@ public class CaesarShiftConverter {
     private static int correctBackShift(int current, int decrement) {
         return current-decrement < 0 ? current-decrement+25 : current-decrement;
     }
+    
+    private CaesarShiftConverter() {}
 }
