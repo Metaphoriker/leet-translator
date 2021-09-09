@@ -63,9 +63,7 @@ public class LeetController {
         fxmlLoader.setControllerFactory(controllerFactory);
 
         try {
-
             return fxmlLoader.load();
-
         } catch (IOException e) {
             throw new IllegalStateException(MessageFormat.format("FXML couldn't get loaded for class: ", clazz), e);
         }
