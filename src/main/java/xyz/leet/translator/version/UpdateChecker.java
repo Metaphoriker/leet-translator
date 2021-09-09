@@ -15,7 +15,7 @@ public class UpdateChecker {
 
     public UpdateChecker() {
 
-        URL resource = getClass().getClassLoader().getResource("version.txt");
+        URL resource = getClass().getClassLoader().getResource("xyz/leet/translator/version.txt");
 
         if(resource == null) {
 

@@ -16,12 +16,12 @@ public class LeetBase {
 
     public static void main(String[] args) {
 
-        Application.launch(LeetApp.class, args);
-
         CompletableFuture.supplyAsync(UPDATE_CHECKER::isUpdateAvailable)
             .thenAccept(result -> {
 
                 if(result.updateAvailable()) {
+
+                    System.out.println("Update is Needed");
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Update available");
@@ -30,6 +30,8 @@ public class LeetBase {
                     alert.showAndWait();
                 }
             });
+
+        Application.launch(LeetApp.class, args);
     }
 
 }
