@@ -16,7 +16,6 @@ public class LeetTranslatorImpl implements LeetTranslator {
     @Override
     public String convert(String toConvert, EncryptionType encryptionType) {
 
-        //TODO hardcoded
         int shift = ThreadLocalRandom.current().nextInt(5)+1;
         return switch (encryptionType) {
 

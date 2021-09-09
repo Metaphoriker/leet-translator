@@ -30,8 +30,8 @@ public interface LeetTranslator {
      */
     String toEmoji(Letter letter);
 
-    /*
-     * TODO
+    /**
+     * Returns the given Letter converted to the fuckery equivalent
      */
     String toFuckery(Letter letter);
 

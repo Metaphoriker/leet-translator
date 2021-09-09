@@ -20,7 +20,7 @@ public class UpdateChecker {
         if(resource == null) {
 
             try {
-                throw new FileNotFoundException("Either the File got deleted or the repo is not public.");
+                throw new FileNotFoundException("Either the File got deleted or the repo is not public");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
