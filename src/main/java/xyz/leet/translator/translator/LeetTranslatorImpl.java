@@ -64,24 +64,11 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        int shift = 0;
-        if(encryptionType == EncryptionType.CAESAR_SHIFT) {
-
-            shift = Integer.parseInt(s.split("_")[0]);
-            s = s.replace(shift + "_", "");
-        }
-
         switch (encryptionType) {
 
             case LEET_LEVEL_1, LEET_LEVEL_2, LEET_LEVEL_3 -> {
 
-                int index = 0;
-                switch (encryptionType) {
-
-                    case LEET_LEVEL_2 -> index = 1;
-                    case LEET_LEVEL_3 -> index = 2;
-                }
-
+                int index = Integer.parseInt(encryptionType.name().split("_")[2])-1;
                 for (String leet : LeetConverter.getLeetFillers(index)) {
 
                     Optional<Letter> optionalLetter = LeetConverter.convert(leet);
@@ -92,7 +79,9 @@ public class LeetTranslatorImpl implements LeetTranslator {
             }
 
             case FUCKERY -> {
+
                 for (String leet : FuckeryConverter.getFuckeryFillers()) {
+
                     Optional<Letter> optionalLetter = FuckeryConverter.convert(leet);
                     s = s.replace(leet, optionalLetter.map(Enum::name).orElse(""));
                 }
@@ -100,7 +89,9 @@ public class LeetTranslatorImpl implements LeetTranslator {
             }
 
             case DISCORD_EMOJI -> {
+
                 for (String leet : EmojiConverter.getEmojiFillers()) {
+
                     Optional<Letter> optionalLetter = EmojiConverter.convert(leet);
                     s = s.replace(leet, optionalLetter.map(Enum::name).orElse(""));
                 }
@@ -109,7 +100,11 @@ public class LeetTranslatorImpl implements LeetTranslator {
 
             case CAESAR_SHIFT -> {
 
+                int shift = Integer.parseInt(s.split("_")[0]);
+                s = s.replace(shift + "_", "");
+
                 for(int i = 0; i < s.length(); i++) {
+
                     String currentS = String.valueOf(s.charAt(i));
                     appendToStringBuilder(stringBuilder, CaesarShiftConverter.convert(currentS, shift), currentS);
                 }
@@ -119,10 +114,6 @@ public class LeetTranslatorImpl implements LeetTranslator {
         }
 
         return stringBuilder.toString();
-    }
-
-    private void appendToStringBuilder(StringBuilder stringBuilder, Optional<Letter> letterOptional, String currentS) {
-        stringBuilder.append(letterOptional.isPresent() ? letterOptional.get() : currentS);
     }
 
     private String loopThroughString(String s, EncryptionType encryptionType, int integer) {
@@ -152,6 +143,10 @@ public class LeetTranslatorImpl implements LeetTranslator {
         }
 
         return stringBuilder.toString();
+    }
+
+    private void appendToStringBuilder(StringBuilder stringBuilder, Optional<Letter> letterOptional, String currentS) {
+        stringBuilder.append(letterOptional.isPresent() ? letterOptional.get() : currentS);
     }
 
 }
