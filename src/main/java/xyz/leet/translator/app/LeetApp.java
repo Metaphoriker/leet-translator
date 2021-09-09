@@ -27,8 +27,6 @@ public class LeetApp extends Application {
         leetController.closeLatestView();
         if(result.updateAvailable()) {
         
-            System.out.println("Update is Needed");
-        
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Update available");
             alert.setHeaderText("Current: " + result.oldVersion() + " | Newest: " + result.newVersion());
