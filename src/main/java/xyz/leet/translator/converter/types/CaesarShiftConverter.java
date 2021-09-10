@@ -45,7 +45,7 @@ public class CaesarShiftConverter extends Converter {
 
     @Override
     public String convert(Letter l) {
-        return letters[correctShift(getIndexOf(l), shift)]
+        return letters[correctShift(getIndexOf(l), shift)];
     }
 
     @Override
