@@ -29,7 +29,7 @@ public class Translator {
 
         EncryptionType encryptionType = encryptionTypeOptional.get();
 
-        return translateToNormal(s, encryptionType);
+        return translateToNormal(s.replace(encryptionType.getEncryptionCode(), ""), encryptionType);
     }
 
     /**
@@ -72,7 +72,7 @@ public class Translator {
             }
         }
 
-        return stringBuilder.toString();
+        return EncryptionUtil.appendEncryptionCode(stringBuilder.toString(), encryptionType);
     }
 
     private String translateToNormal(String s, EncryptionType encryptionType) {
