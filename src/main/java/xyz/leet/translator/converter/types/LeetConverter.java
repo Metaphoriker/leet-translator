@@ -84,7 +84,7 @@ public class LeetConverter extends Converter {
     }
 
     /*
-     * TODO bad solution
+     * bad solution
      */
     public void level(int level) {
         this.level = level;

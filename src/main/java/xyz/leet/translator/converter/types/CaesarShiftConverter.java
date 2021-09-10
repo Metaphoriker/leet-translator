@@ -63,7 +63,7 @@ public class CaesarShiftConverter extends Converter {
     }
 
     /*
-     * TODO bad solution
+     * bad solution
      */
     public void shift(int shift) {
         this.shift = shift;
