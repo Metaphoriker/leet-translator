@@ -52,6 +52,7 @@ public class CaesarShiftConverter extends Converter {
     public Optional<Letter> convert(String s) {
 
         Letter letter;
+
         try {
             letter = Letter.valueOf(letters[correctBackShift(getIndexOf(Letter.valueOf(s.toUpperCase())), shift)]);
         } catch (Exception e) {
