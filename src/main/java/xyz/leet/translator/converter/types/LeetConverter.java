@@ -83,9 +83,6 @@ public class LeetConverter extends Converter {
         return generics;
     }
 
-    /*
-     * bad solution
-     */
     public void level(int level) {
         this.level = level;
     }
