@@ -81,7 +81,6 @@ public class Translator {
 
         switch (encryptionType) {
 
-            //TODO
             case LEET_LEVEL_1, LEET_LEVEL_2, LEET_LEVEL_3 -> {
 
                 int index = Integer.parseInt(encryptionType.name().split("_")[2])-1;

@@ -61,7 +61,7 @@ public class CaesarShiftConverter extends Converter {
         return Optional.of(letter);
     }
 
-    /**
+    /*
      * TODO bad solution
      */
     public void shift(int shift) {
