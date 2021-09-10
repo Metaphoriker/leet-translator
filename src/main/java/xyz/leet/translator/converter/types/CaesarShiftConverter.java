@@ -1,38 +1,16 @@
-package xyz.leet.translator.converter;
+package xyz.leet.translator.converter.types;
 
+import xyz.leet.translator.converter.Converter;
 import xyz.leet.translator.enums.Letter;
 
 import java.util.Optional;
 
-public class CaesarShiftConverter {
+public class CaesarShiftConverter extends Converter {
 
     /*
      * The letters in alphabetic order to be able to shift around them
      */
     private static final String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-
-    /**
-     * Converts the given letter to the letter at the position current+shift
-     */
-    public static String convert(Letter letter, int shift) {
-        return letters[correctShift(getIndexOf(letter), shift)];
-    }
-
-    /**
-     * Converts the given letter to the letter at the position current-shift
-     * @see Letter#valueOf(String)
-     */
-    public static Optional<Letter> convert(String shifted, int shift) {
-
-        Letter letter;
-        try {
-            letter = Letter.valueOf(letters[correctBackShift(getIndexOf(Letter.valueOf(shifted.toUpperCase())), shift)]);
-        } catch (Exception e) {
-            return Optional.empty();
-        }
-
-        return Optional.of(letter);
-    }
 
     /*
      * Returns the index of the given letter
@@ -62,6 +40,31 @@ public class CaesarShiftConverter {
     private static int correctBackShift(int current, int decrement) {
         return current-decrement < 0 ? current-decrement+25 : current-decrement;
     }
-    
-    private CaesarShiftConverter() {}
+
+    private int shift;
+
+    @Override
+    public String convert(Letter l) {
+        return letters[correctShift(getIndexOf(l), shift)]
+    }
+
+    @Override
+    public Optional<Letter> convert(String s) {
+
+        Letter letter;
+        try {
+            letter = Letter.valueOf(letters[correctBackShift(getIndexOf(Letter.valueOf(s.toUpperCase())), shift)]);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+
+        return Optional.of(letter);
+    }
+
+    /**
+     * TODO bad solution
+     */
+    public void shift(int shift) {
+        this.shift = shift;
+    }
 }

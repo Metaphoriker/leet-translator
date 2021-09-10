@@ -1,10 +1,11 @@
-package xyz.leet.translator.converter;
+package xyz.leet.translator.converter.types;
 
+import xyz.leet.translator.converter.Converter;
 import xyz.leet.translator.enums.Letter;
 
 import java.util.*;
 
-public class LeetConverter {
+public class LeetConverter extends Converter {
 
     /*
      * This SortedMap contains every Letter with their 3 Leet equivalents.
@@ -43,23 +44,10 @@ public class LeetConverter {
         map.put(Letter.Z, new String[]{"2", "2", "7_"});
     }
 
-    /**
-     * Converts the given letter to a Leet String in the given Leet level
-     *
-     * @throws IllegalArgumentException if the level is higher than 3
-     */
-    public static String convert(Letter letter, int level) {
+    private int level;
 
-        if(level > 3)
-            throw new IllegalArgumentException("Cant be >= 3");
-
-        return map.get(letter)[level-1];
-    }
-
-    /**
-     * Converts the given Leet letter to a {@link Letter}
-     */
-    public static Optional<Letter> convert(String leet) {
+    @Override
+    public Optional<Letter> convert(String leet) {
 
         for(Map.Entry<Letter, String[]> entry : map.entrySet()) {
 
@@ -73,7 +61,17 @@ public class LeetConverter {
         return Optional.empty();
     }
 
-    public static List<String> getLeetFillers(int level) {
+    @Override
+    public String convert(Letter l) {
+
+        if(level > 3)
+            throw new IllegalArgumentException("Cant be >= 3");
+
+        return map.get(l)[level-1];
+    }
+
+    @Override
+    public List<String> getFillers() {
 
         List<String> generics = new ArrayList<>();
 
@@ -84,7 +82,12 @@ public class LeetConverter {
 
         return generics;
     }
-    
-    private LeetConverter() {}
+
+    /**
+     * TODO bad solution
+     */
+    public void level(int level) {
+        this.level = level;
+    }
 
 }

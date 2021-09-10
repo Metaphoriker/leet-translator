@@ -1,10 +1,11 @@
-package xyz.leet.translator.converter;
+package xyz.leet.translator.converter.types;
 
+import xyz.leet.translator.converter.Converter;
 import xyz.leet.translator.enums.Letter;
 
 import java.util.*;
 
-public class FuckeryConverter {
+public class FuckeryConverter extends Converter {
 
     public static final Map<Letter, String> map = new HashMap<>();
 
@@ -37,30 +38,25 @@ public class FuckeryConverter {
         map.put(Letter.Z, "OSTRICH");
     }
 
-    /**
-     * Converts the given letter to a Fuckery String in the given Leet level
-     *
-     * @throws IllegalArgumentException if the level is higher than 3
-     */
-    public static String convert(Letter letter) {
-        return map.get(letter);
+    @Override
+    public String convert(Letter l) {
+        return map.get(l);
     }
 
-    /**
-     * Converts the given Fuckery letter to a {@link Letter}
-     */
-    public static Optional<Letter> convert(String leet) {
+    @Override
+    public Optional<Letter> convert(String s) {
 
         for(Map.Entry<Letter, String> entry : map.entrySet()) {
 
-            if(leet.equals(entry.getValue()))
+            if(s.equals(entry.getValue()))
                 return Optional.of(entry.getKey());
         }
 
         return Optional.empty();
     }
 
-    public static List<String> getFuckeryFillers() {
+    @Override
+    public List<String> getFillers() {
 
         List<String> generics = new ArrayList<>();
 
@@ -71,6 +67,5 @@ public class FuckeryConverter {
 
         return generics;
     }
-    
-    private FuckeryConverter() {}
+
 }

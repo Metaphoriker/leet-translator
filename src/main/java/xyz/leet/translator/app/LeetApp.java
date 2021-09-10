@@ -3,8 +3,8 @@ package xyz.leet.translator.app;
 import javafx.application.Application;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import xyz.leet.translator.translator.LeetTranslator;
-import xyz.leet.translator.translator.LeetTranslatorImpl;
+import xyz.leet.translator.converter.ConverterBundle;
+import xyz.leet.translator.translator.Translator;
 import xyz.leet.translator.version.UpdateChecker;
 import xyz.leet.translator.version.UpdateCheckerResult;
 
@@ -12,14 +12,20 @@ import xyz.leet.translator.version.UpdateCheckerResult;
  * Starter for the UI
  */
 public class LeetApp extends Application {
-    
-    private static final LeetTranslator LEET_TRANSLATOR = new LeetTranslatorImpl();
-    private static final UpdateChecker UPDATE_CHECKER = new UpdateChecker();
-    
+
+    private static final Translator TRANSLATOR;
+    private static final UpdateChecker UPDATE_CHECKER;
+
+    static {
+
+        TRANSLATOR = new Translator(new ConverterBundle());
+        UPDATE_CHECKER = new UpdateChecker();
+    }
+
     @Override
     public void start(Stage stage) {
 
-        LeetController leetController = new LeetController(stage, LEET_TRANSLATOR);
+        LeetController leetController = new LeetController(stage, TRANSLATOR);
         leetController.showLoadingView();
     
         UpdateCheckerResult result = UPDATE_CHECKER.isUpdateAvailable();

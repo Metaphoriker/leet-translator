@@ -1,10 +1,11 @@
-package xyz.leet.translator.converter;
+package xyz.leet.translator.converter.types;
 
+import xyz.leet.translator.converter.Converter;
 import xyz.leet.translator.enums.Letter;
 
 import java.util.*;
 
-public class EmojiConverter {
+public class EmojiConverter extends Converter {
 
     /*
      * This SortedMap contains every Letter with their Emoji equivalent.
@@ -41,17 +42,13 @@ public class EmojiConverter {
         map.put(Letter.Z, ":tiger2:");
     }
 
-    /**
-     * Converts the given letter to the Emoji equivalent.
-     */
-    public static String convert(Letter letter) {
-        return map.get(letter);
+    @Override
+    public String convert(Letter l) {
+        return map.get(l);
     }
 
-    /**
-     * Converts the given Emoji String to the Letter equivalent.
-     */
-    public static Optional<Letter> convert(String s) {
+    @Override
+    public Optional<Letter> convert(String s) {
 
         for(Map.Entry<Letter, String> entry : map.entrySet()) {
 
@@ -62,7 +59,8 @@ public class EmojiConverter {
         return Optional.empty();
     }
 
-    public static List<String> getEmojiFillers() {
+    @Override
+    public List<String> getFillers() {
 
         List<String> generics = new ArrayList<>();
 
@@ -73,7 +71,5 @@ public class EmojiConverter {
 
         return generics;
     }
-    
-    private EmojiConverter() {}
 
 }

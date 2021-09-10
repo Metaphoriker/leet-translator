@@ -9,7 +9,7 @@ import javafx.util.Callback;
 import xyz.leet.translator.app.views.LoadingView;
 import xyz.leet.translator.app.views.TranslatorView;
 import xyz.leet.translator.app.views.TranslatorViewModel;
-import xyz.leet.translator.translator.LeetTranslator;
+import xyz.leet.translator.translator.Translator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,17 +20,17 @@ import java.text.MessageFormat;
  */
 public class LeetController {
 
-    private final LeetTranslator leetTranslator;
+    private final Translator translator;
     private final Stage stage;
 
-    public LeetController(Stage stage, LeetTranslator leetTranslator) {
+    public LeetController(Stage stage, Translator translator) {
 
         this.stage = stage;
-        this.leetTranslator = leetTranslator;
+        this.translator = translator;
     }
 
     public void showTranslatorView() {
-        loadAndShowView(TranslatorView.class, (Class<?> param) -> new TranslatorView(new TranslatorViewModel(leetTranslator)), "Leet-Translator");
+        loadAndShowView(TranslatorView.class, (Class<?> param) -> new TranslatorView(new TranslatorViewModel(translator)), "Leet-Translator");
     }
     
     public void showLoadingView() {
