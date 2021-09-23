@@ -67,10 +67,11 @@ public class Translator {
 
                 case DISCORD_EMOJI -> stringBuilder.append(converterBundle.emojiConverter.convert(letter));
                 case FUCKERY -> stringBuilder.append(converterBundle.fuckeryConverter.convert(letter));
-                default -> throw new IllegalArgumentException("Untreated enum expression");
-
             }
         }
+
+        if(encryptionType == EncryptionType.CAESAR_SHIFT)
+            stringBuilder.insert(0, shift + "_");
 
         return EncryptionUtil.appendEncryptionCode(stringBuilder.toString(), encryptionType);
     }
@@ -100,7 +101,6 @@ public class Translator {
 
             case FUCKERY -> stringBuilder.append(convertToLetter(s, converterBundle.fuckeryConverter));
             case DISCORD_EMOJI -> stringBuilder.append(convertToLetter(s, converterBundle.emojiConverter));
-            default -> throw new IllegalArgumentException("Untreated enum expression");
         }
 
         return stringBuilder.toString();

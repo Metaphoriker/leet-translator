@@ -9,28 +9,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xyz.leet.translator.app.views.TranslatorView">
-  <tabs>
-    <Tab text="Translator">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                   <Button fx:id="translateButton" layoutX="473.0" layoutY="335.0" mnemonicParsing="false" onAction="#onButtonPress" prefWidth="115.0" text="Translate" />
-                   <TextArea fx:id="textInput" layoutX="8.0" layoutY="8.0" prefHeight="325.0" prefWidth="262.0" promptText="Text to translate...." />
-                   <TextArea fx:id="textOutput" layoutX="326.0" layoutY="8.0" prefHeight="325.0" prefWidth="262.0" promptText="Translated text...." />
-                   <ComboBox fx:id="comboBox" layoutX="155.0" layoutY="335.0" prefHeight="25.0" prefWidth="115.0" />
-               </children></AnchorPane>
-      </content>
-    </Tab>
-    <Tab text="Credits">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                   <Label layoutX="251.0" layoutY="153.0" prefHeight="33.0" prefWidth="215.0" text="Redaam (1337)" textAlignment="CENTER" />
-                  <Label layoutX="251.0" layoutY="51.0" prefHeight="33.0" prefWidth="215.0" text="GodCipher (CEO)" textAlignment="CENTER" />
-                  <Label layoutX="251.0" layoutY="99.0" prefHeight="33.0" prefWidth="215.0" text="olijeffers0n (POG)" textAlignment="CENTER" />
-                  <Label layoutX="251.0" layoutY="203.0" prefHeight="33.0" prefWidth="215.0" text="DeadSpark (DEAD)" textAlignment="CENTER" />
-               </children></AnchorPane>
-      </content>
-    </Tab>
-  </tabs>
+    <tabs>
+        <Tab text="Translator">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="translateButton" layoutX="473.0" layoutY="335.0" mnemonicParsing="false" onAction="#onButtonPress" prefWidth="115.0" text="Translate" />
+                        <TextArea fx:id="textInput" layoutX="8.0" layoutY="8.0" prefHeight="325.0" prefWidth="262.0" promptText="Text to translate...." />
+                        <TextArea fx:id="textOutput" layoutX="326.0" layoutY="8.0" prefHeight="325.0" prefWidth="262.0" promptText="Translated text...." />
+                        <ComboBox fx:id="comboBox" layoutX="155.0" layoutY="335.0" prefHeight="25.0" prefWidth="115.0" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Credits">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <Label layoutX="251.0" layoutY="153.0" prefHeight="33.0" prefWidth="215.0" text="Redaam (1337)" textAlignment="CENTER" />
+                        <Label layoutX="251.0" layoutY="51.0" prefHeight="33.0" prefWidth="215.0" text="GodCipher (CEO)" textAlignment="CENTER" />
+                        <Label layoutX="251.0" layoutY="99.0" prefHeight="33.0" prefWidth="215.0" text="olijeffers0n (POG)" textAlignment="CENTER" />
+                        <Label layoutX="251.0" layoutY="203.0" prefHeight="33.0" prefWidth="215.0" text="DeadSpark (DEAD)" textAlignment="CENTER" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
 </TabPane>
