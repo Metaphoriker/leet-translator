@@ -15,6 +15,7 @@ public class TranslatorViewModel {
     }
 
     public String translate(String text, EncryptionType encryptionType) {
+        if (encryptionType == EncryptionType.DECODE) return translator.translate(text);
         return translator.translate(text, encryptionType);
     }
 

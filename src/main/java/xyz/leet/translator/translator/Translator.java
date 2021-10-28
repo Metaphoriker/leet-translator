@@ -29,7 +29,9 @@ public class Translator {
 
         EncryptionType encryptionType = encryptionTypeOptional.get();
 
-        return translateToNormal(s.replace(encryptionType.getEncryptionCode(), ""), encryptionType);
+        s = s.replace(encryptionType.getEncryptionCode(), "");
+
+        return translateToNormal(s, encryptionType);
     }
 
     /**
@@ -96,7 +98,15 @@ public class Translator {
                 s = s.replace(shift + "_", "");
 
                 converterBundle.caesarShiftConverter.shift(shift);
-                stringBuilder.append(convertToLetter(s, converterBundle.caesarShiftConverter));
+
+                for (int i = 0; i < s.length(); i++) {
+                    char character = s.charAt(i);
+                    if (Character.isAlphabetic(character)) {
+                        stringBuilder.append(converterBundle.caesarShiftConverter.convert(Character.toString(character)).map(Enum::name).orElse("").charAt(0));
+                    }else {
+                        stringBuilder.append(character);
+                    }
+                }
             }
 
             case FUCKERY -> stringBuilder.append(convertToLetter(s, converterBundle.fuckeryConverter));
@@ -110,8 +120,7 @@ public class Translator {
 
         for(String leet : converter.getFillers()) {
 
-            Optional<Letter> optionalLetter = converter.convert(s);
-            s = s.replace(leet, optionalLetter.map(Enum::name).orElse(""));
+            s = s.replace(leet, converter.convert(leet).map(Enum::name).orElse(""));
         }
 
         return s;
