@@ -38,13 +38,18 @@ public class TranslatorView implements Initializable {
         textInput.setWrapText(true);
         textOutput.setEditable(false);
         textOutput.setWrapText(true);
+
         comboBox.setItems(encryptionTypeList());
         comboBox.setValue(comboBox.getItems().get(0));
+
+        translatorViewModel.getToTranslateProperty().bindBidirectional(textInput.textProperty());
+        translatorViewModel.getOutputProperty().bindBidirectional(textOutput.textProperty());
+        translatorViewModel.getEncryptionTypeProperty().bindBidirectional(comboBox.valueProperty());
     }
 
     @FXML
     public void onButtonPress(ActionEvent actionEvent) {
-        textOutput.setText(translatorViewModel.translate(textInput.getText(), comboBox.getValue()));
+        translatorViewModel.translate();
     }
 
     private ObservableList<EncryptionType> encryptionTypeList() {

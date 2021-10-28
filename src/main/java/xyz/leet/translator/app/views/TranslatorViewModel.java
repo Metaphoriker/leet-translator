@@ -1,5 +1,9 @@
 package xyz.leet.translator.app.views;
 
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import xyz.leet.translator.enums.EncryptionType;
 import xyz.leet.translator.translator.Translator;
 
@@ -10,13 +14,31 @@ public class TranslatorViewModel {
 
     private final Translator translator;
 
+    private final StringProperty toTranslateProperty = new SimpleStringProperty();
+    private final StringProperty outputProperty = new SimpleStringProperty();
+    private final Property<EncryptionType> encryptionTypeProperty = new SimpleObjectProperty<>();
+
     public TranslatorViewModel(Translator translator) {
         this.translator = translator;
     }
 
-    public String translate(String text, EncryptionType encryptionType) {
-        if (encryptionType == EncryptionType.DECODE) return translator.translate(text);
-        return translator.translate(text, encryptionType);
+    public void translate() {
+
+        if (encryptionTypeProperty.getValue() == EncryptionType.DECODE)
+            outputProperty.setValue(translator.translate(toTranslateProperty.get()));
+        else
+            outputProperty.setValue(translator.translate(toTranslateProperty.get(), encryptionTypeProperty.getValue()));
     }
 
+    public StringProperty getToTranslateProperty() {
+        return toTranslateProperty;
+    }
+
+    public StringProperty getOutputProperty() {
+        return outputProperty;
+    }
+
+    public Property<EncryptionType> getEncryptionTypeProperty() {
+        return encryptionTypeProperty;
+    }
 }
