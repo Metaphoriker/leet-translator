@@ -28,7 +28,6 @@ public class Translator {
         if(encryptionTypeOptional.isEmpty()) return s;
 
         EncryptionType encryptionType = encryptionTypeOptional.get();
-
         s = s.replace(encryptionType.getEncryptionCode(), "");
 
         return translateToNormal(s, encryptionType);
@@ -41,7 +40,6 @@ public class Translator {
 
         StringBuilder stringBuilder = new StringBuilder();
         int shift = ThreadLocalRandom.current().nextInt(5)+1;
-
         for(int i = 0; i < s.length(); i++) {
 
             char current = s.charAt(i);
@@ -81,7 +79,6 @@ public class Translator {
     private String translateToNormal(String s, EncryptionType encryptionType) {
 
         StringBuilder stringBuilder = new StringBuilder();
-
         switch (encryptionType) {
 
             case LEET_LEVEL_1, LEET_LEVEL_2, LEET_LEVEL_3 -> {
@@ -100,12 +97,12 @@ public class Translator {
                 converterBundle.caesarShiftConverter.shift(shift);
 
                 for (int i = 0; i < s.length(); i++) {
+
                     char character = s.charAt(i);
-                    if (Character.isAlphabetic(character)) {
+                    if (Character.isAlphabetic(character))
                         stringBuilder.append(converterBundle.caesarShiftConverter.convert(Character.toString(character)).map(Enum::name).orElse("").charAt(0));
-                    }else {
+                    else
                         stringBuilder.append(character);
-                    }
                 }
             }
 
@@ -118,10 +115,8 @@ public class Translator {
 
     private String convertToLetter(String s, Converter converter) {
 
-        for(String leet : converter.getFillers()) {
-
+        for(String leet : converter.getFillers())
             s = s.replace(leet, converter.convert(leet).map(Enum::name).orElse(""));
-        }
 
         return s;
     }
