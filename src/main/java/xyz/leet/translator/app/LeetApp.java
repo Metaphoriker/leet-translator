@@ -25,7 +25,7 @@ public class LeetApp extends Application {
         LeetController leetController = new LeetController(stage, TRANSLATOR);
         leetController.showLoadingView();
     
-        UpdateCheckerResult result = UPDATE_CHECKER.isUpdateAvailable();
+        UpdateCheckerResult result = UPDATE_CHECKER.checkUpdate();
     
         leetController.closeLatestView();
         if(result.updateAvailable()) {
