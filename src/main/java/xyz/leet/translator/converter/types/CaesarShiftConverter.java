@@ -12,9 +12,6 @@ public class CaesarShiftConverter extends Converter {
      */
     private static final String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
-    /*
-     * Returns the index of the given letter
-     */
     private static int getIndexOf(Letter letter) {
 
         for(int i = 0; i < letters.length-1; i++)
@@ -33,7 +30,7 @@ public class CaesarShiftConverter extends Converter {
     }
 
     /*
-     * Returns the correct shift evaluated from current and incremet.
+     * Returns the correct shift evaluated from current and increment.
      *
      * If the shift is lower than 0 (min. letters length) it will be 25-remaining
      */
@@ -62,7 +59,10 @@ public class CaesarShiftConverter extends Converter {
         return Optional.of(letter);
     }
 
-    public void shift(int shift) {
+    /**
+     * @apiNote If the shift is never being set, it will be 0 by default
+     */
+    public void setShift(int shift) {
         this.shift = shift;
     }
 }

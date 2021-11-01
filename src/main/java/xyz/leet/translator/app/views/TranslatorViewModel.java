@@ -7,9 +7,6 @@ import javafx.beans.property.StringProperty;
 import xyz.leet.translator.enums.EncryptionType;
 import xyz.leet.translator.translator.Translator;
 
-/**
- * The ViewModel for the {@link TranslatorView} which manages the interactions in the {@link TranslatorView}.
- */
 public class TranslatorViewModel {
 
     private final Translator translator;

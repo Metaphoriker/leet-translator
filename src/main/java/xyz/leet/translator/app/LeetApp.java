@@ -8,9 +8,6 @@ import xyz.leet.translator.translator.Translator;
 import xyz.leet.translator.version.UpdateChecker;
 import xyz.leet.translator.version.UpdateCheckerResult;
 
-/**
- * Starter for the UI
- */
 public class LeetApp extends Application {
 
     private static final Translator TRANSLATOR;

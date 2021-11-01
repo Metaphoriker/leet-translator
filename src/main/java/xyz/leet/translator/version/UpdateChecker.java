@@ -15,14 +15,6 @@ public class UpdateChecker {
     private static final String URL_LINK = "https://raw.githubusercontent.com/redaam/leet-translator/main/src/main/resources/xyz/leet/translator/version.txt?token=AL5WWYJ7EHRURRTI4QNB3JDBEYZXU";
     private File versionFile;
     
-    private static void error(String msg) {
-        
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText("AN ERROR OCCURRED");
-        alert.setContentText(msg);
-        alert.showAndWait();
-    }
-    
     public UpdateChecker() {
         
         URL resource = getClass().getClassLoader().getResource("xyz/leet/translator/version.txt");
@@ -60,7 +52,15 @@ public class UpdateChecker {
         
         return new UpdateCheckerResult(latestVersion, currentVersion, !latestVersion.equals(currentVersion));
     }
-    
+
+    private void error(String msg) {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("AN ERROR OCCURRED");
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
     private void instantiateVersionFile(URL resource) {
         
         try {

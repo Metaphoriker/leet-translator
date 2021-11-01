@@ -8,6 +8,10 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * A loading view which is shown if something is loading so that the user gets the input that something is being loaded.
+ * Shows an infinity loading GIF as long as data is being loaded.
+ */
 public class LoadingView implements Initializable {
     
     @FXML

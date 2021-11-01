@@ -7,7 +7,7 @@ import java.util.*;
 
 public class FuckeryConverter extends Converter {
 
-    public static final Map<Letter, String> map = new HashMap<>();
+    private static final Map<Letter, String> map = new HashMap<>();
 
     static {
         map.put(Letter.A, "CHAIR");

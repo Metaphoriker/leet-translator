@@ -7,9 +7,6 @@ import java.util.*;
 
 public class EmojiConverter extends Converter {
 
-    /*
-     * This SortedMap contains every Letter with their Emoji equivalent.
-     */
     private static final Map<Letter, String> map = new HashMap<>();
 
     static {

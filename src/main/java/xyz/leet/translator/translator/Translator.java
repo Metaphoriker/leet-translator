@@ -55,13 +55,13 @@ public class Translator {
 
                 case LEET_LEVEL_1, LEET_LEVEL_3, LEET_LEVEL_2 -> {
 
-                    converterBundle.leetConverter.level(Integer.parseInt(encryptionType.name().split("_")[2]));
+                    converterBundle.leetConverter.setLevel(Integer.parseInt(encryptionType.name().split("_")[2]));
                     stringBuilder.append(converterBundle.leetConverter.convert(letter));
                 }
 
                 case CAESAR_SHIFT -> {
 
-                    converterBundle.caesarShiftConverter.shift(shift);
+                    converterBundle.caesarShiftConverter.setShift(shift);
                     stringBuilder.append(converterBundle.caesarShiftConverter.convert(letter));
                 }
 
@@ -85,7 +85,7 @@ public class Translator {
 
                 int index = Integer.parseInt(encryptionType.name().split("_")[2])-1;
 
-                converterBundle.leetConverter.level(index);
+                converterBundle.leetConverter.setLevel(index);
                 stringBuilder.append(convertToLetter(s, converterBundle.leetConverter));
             }
 
@@ -94,7 +94,7 @@ public class Translator {
                 int shift = Integer.parseInt(s.split("_")[0]);
                 s = s.replace(shift + "_", "");
 
-                converterBundle.caesarShiftConverter.shift(shift);
+                converterBundle.caesarShiftConverter.setShift(shift);
 
                 for (int i = 0; i < s.length(); i++) {
 

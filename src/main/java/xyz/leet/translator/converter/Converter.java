@@ -12,7 +12,7 @@ public abstract class Converter {
 
     public abstract String convert(Letter l);
 
-    /**
+    /*
      * This method is for override purpose only
      */
     public List<String> getFillers() {

@@ -19,7 +19,12 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * Leet-Translator view which represents the Translator visually.
+ * A window with 2 tabs.
+ *
+ * The first tab represents the {@link xyz.leet.translator.translator.Translator} with a cute little UI to translate a given String
+ * to the selected {@link EncryptionType} and back.
+ *
+ * The second tab are the credits for the creators of Leet-Translator.
  */
 public class TranslatorView implements Initializable {
 

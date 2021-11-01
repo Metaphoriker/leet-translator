@@ -83,7 +83,10 @@ public class LeetConverter extends Converter {
         return generics;
     }
 
-    public void level(int level) {
+    /**
+     * @apiNote If the level is never being set, it will be 0 by default
+     */
+    public void setLevel(int level) {
         this.level = level;
     }
 

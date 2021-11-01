@@ -3,7 +3,7 @@ package xyz.leet.translator;
 import javafx.application.Application;
 import xyz.leet.translator.app.LeetApp;
 
-/**
+/*
  * Mighty MAIN
  */
 public class LeetBase {
