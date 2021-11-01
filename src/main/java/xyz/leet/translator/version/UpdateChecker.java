@@ -28,7 +28,7 @@ public class UpdateChecker {
         instantiateVersionFile(resource);
     }
     
-    public UpdateCheckerResult isUpdateAvailable() {
+    public UpdateCheckerResult checkUpdate() {
         
         HttpURLConnection connection = null;
         String currentVersion;
