@@ -5,7 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import xyz.leet.translator.enums.EncryptionType;
 
 import java.net.URL;
@@ -23,6 +30,9 @@ public class TranslatorView implements Initializable {
     }
 
     @FXML
+    private TabPane tabPane;
+
+    @FXML
     private TextArea textInput;
 
     @FXML
@@ -33,6 +43,8 @@ public class TranslatorView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        tabPane.setBackground(new Background(backgroundImage()));
 
         textInput.setEditable(true);
         textInput.setWrapText(true);
@@ -60,6 +72,18 @@ public class TranslatorView implements Initializable {
         list.sort(Comparator.comparing(Enum::name));
 
         return FXCollections.observableArrayList(list);
+    }
+
+    private BackgroundImage backgroundImage() {
+
+        Image image = new Image(getClass().getClassLoader().getResource("background.png").toExternalForm());
+
+        return new BackgroundImage(
+                image,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT,
+                new BackgroundPosition(Side.LEFT, 0, true, Side.BOTTOM, 0, true),
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, false, true)
+        );
     }
 
 }
