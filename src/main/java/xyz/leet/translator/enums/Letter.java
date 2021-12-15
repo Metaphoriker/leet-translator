@@ -1,7 +1,7 @@
 package xyz.leet.translator.enums;
 
 public enum Letter {
-
+    
     A,
     B,
     C,
@@ -28,5 +28,5 @@ public enum Letter {
     X,
     Y,
     Z;
-
+    
 }

@@ -11,7 +11,6 @@ public class EncryptionUtil {
     }
 
     public static String withoutEncryptionCode(String s) {
-
         Optional<EncryptionType> leetLevel = getEncryption(s);
         return leetLevel.map(encryptionType -> s.substring(0, s.length() - encryptionType.getEncryptionCode().length())).orElse(s);
     }
@@ -25,6 +24,7 @@ public class EncryptionUtil {
             if(s.endsWith(encryptionType.getEncryptionCode()))
                 return Optional.of(encryptionType);
         }
+        
         return Optional.empty();
     }
 

@@ -6,11 +6,11 @@ import xyz.leet.translator.enums.Letter;
 import java.util.*;
 
 public class EmojiConverter extends Converter {
-
+    
     private static final Map<Letter, String> map = new HashMap<>();
-
+    
     static {
-
+        
         map.put(Letter.A, ":chart_with_upwards_trend:");
         map.put(Letter.B, ":beach:");
         map.put(Letter.C, ":eyes:");
@@ -38,35 +38,33 @@ public class EmojiConverter extends Converter {
         map.put(Letter.Y, ":motorboat:");
         map.put(Letter.Z, ":tiger2:");
     }
-
+    
+    @Override
+    public Optional<Letter> convert(String s) {
+        
+        for (Map.Entry<Letter, String> entry : map.entrySet())
+            if (s.equals(entry.getValue()))
+                return Optional.of(entry.getKey());
+        
+        return Optional.empty();
+    }
+    
     @Override
     public String convert(Letter l) {
         return map.get(l);
     }
-
-    @Override
-    public Optional<Letter> convert(String s) {
-
-        for(Map.Entry<Letter, String> entry : map.entrySet()) {
-
-            if(s.equals(entry.getValue()))
-                return Optional.of(entry.getKey());
-        }
-
-        return Optional.empty();
-    }
-
+    
     @Override
     public List<String> getFillers() {
-
+        
         List<String> generics = new ArrayList<>();
-
+        
         for (Letter letter : Letter.values())
             generics.add(map.get(letter));
-
+        
         generics.sort((string1, string2) -> string2.length() - string1.length());
-
+        
         return generics;
     }
-
+    
 }

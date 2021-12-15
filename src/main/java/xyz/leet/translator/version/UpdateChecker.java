@@ -12,7 +12,8 @@ import java.nio.file.Paths;
 
 public class UpdateChecker {
     
-    private static final String URL_LINK = "https://raw.githubusercontent.com/redaam/leet-translator/main/src/main/resources/xyz/leet/translator/version.txt?token=AL5WWYJ7EHRURRTI4QNB3JDBEYZXU";
+    private static final String URL_LINK = "https://raw.githubusercontent.com/Luziferium/leet-translator/main/src/main/resources/xyz/leet/translator/version.txt";
+    
     private File versionFile;
     
     public UpdateChecker() {
@@ -20,7 +21,6 @@ public class UpdateChecker {
         URL resource = getClass().getClassLoader().getResource("xyz/leet/translator/version.txt");
         
         if (resource == null) {
-            
             error("JAR is corrupted. Please reinstall or try again");
             return;
         }
@@ -41,10 +41,12 @@ public class UpdateChecker {
             
             currentVersion = Files.readString(Path.of(versionFile.toURI()));
             latestVersion = new BufferedReader(new InputStreamReader(connection.getInputStream())).readLine();
+        
         } catch (Exception e) {
             
             error("Could not resolve connection to GitHub repository");
             return new UpdateCheckerResult(null, null, false);
+            
         } finally {
             
             if (connection != null) connection.disconnect();
