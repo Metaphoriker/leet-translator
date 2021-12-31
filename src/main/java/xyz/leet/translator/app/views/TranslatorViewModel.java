@@ -21,7 +21,7 @@ public class TranslatorViewModel {
     }
     
     public void translate() {
-    
+        
         DiscordHandler.setState("Last used EncryptionType: " + encryptionTypeProperty.getValue().name());
         
         if (encryptionTypeProperty.getValue() == EncryptionType.DECODE)

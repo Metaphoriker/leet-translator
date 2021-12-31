@@ -34,12 +34,6 @@ public class DiscordHandler {
         DISCORD_RPC.Discord_UpdatePresence(DISCORD_RICH_PRESENCE);
     }
     
-    public static void setDetails(String details) {
-        
-        DISCORD_RICH_PRESENCE.details = details;
-        DISCORD_RPC.Discord_UpdatePresence(DISCORD_RICH_PRESENCE);
-    }
-    
     public static void setState(String state) {
         
         DISCORD_RICH_PRESENCE.state = state;

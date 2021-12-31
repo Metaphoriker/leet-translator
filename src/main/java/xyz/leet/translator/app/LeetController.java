@@ -16,7 +16,7 @@ import java.net.URL;
 import java.text.MessageFormat;
 
 /**
- * Central point of contact for loading, opening and connecting Views with its ViewModel.
+ * Central point of contact for loading, connecting and opening Views with its ViewModel.
  */
 public class LeetController {
     

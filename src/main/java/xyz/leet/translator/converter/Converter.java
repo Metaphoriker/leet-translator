@@ -17,7 +17,8 @@ public abstract class Converter {
     
     /**
      * Tries to converts the given String to a single Letter.
-     * Does return an empty Optional if no matching Letter equivalents could be found.
+     *
+     * @return An empty Optional if no matching Letter equivalents could be found, otherwise the Letter in an Optional
      */
     public abstract Optional<Letter> convert(String s);
     
