@@ -35,6 +35,13 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>discord-rpc</id>
+            <url>http://maven.scijava.org/content/repositories/public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -50,6 +57,11 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>club.minnced</groupId>
+            <artifactId>java-discord-rpc</artifactId>
+            <version>v2.0.2</version>
         </dependency>
     </dependencies>
 

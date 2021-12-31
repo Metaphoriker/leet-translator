@@ -26,7 +26,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                     <children>
                         <Label layoutX="251.0" layoutY="153.0" prefHeight="33.0" prefWidth="215.0" text="Redaam (1337)" textAlignment="CENTER" />
-                        <Label layoutX="251.0" layoutY="51.0" prefHeight="33.0" prefWidth="215.0" text="GodCipher (CEO)" textAlignment="CENTER" />
+                        <Label layoutX="251.0" layoutY="51.0" prefHeight="33.0" prefWidth="215.0" text="GodCipher (GOD)" textAlignment="CENTER" />
                         <Label layoutX="251.0" layoutY="99.0" prefHeight="33.0" prefWidth="215.0" text="olijeffers0n (POG)" textAlignment="CENTER" />
                         <Label layoutX="251.0" layoutY="203.0" prefHeight="33.0" prefWidth="215.0" text="DeadSpark (DEAD)" textAlignment="CENTER" />
                     </children></AnchorPane>
