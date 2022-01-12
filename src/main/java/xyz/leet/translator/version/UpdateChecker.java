@@ -70,7 +70,7 @@ public class UpdateChecker {
         alert.showAndWait();
     }
 
-    private Path fetchVersionFile(URI uri) throws IOException {
+    private Path fetchVersionFilePath(URI uri) throws IOException {
     
         Map<String, String> env = new HashMap<>();
         
@@ -83,7 +83,7 @@ public class UpdateChecker {
     private void instantiateVersionFile(URL resource) {
         
         try {
-            this.versionFile = new File(fetchVersionFile(resource.toURI()).toString());
+            this.versionFile = new File(fetchVersionFilePath(resource.toURI()).toString());
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
