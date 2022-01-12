@@ -2,13 +2,21 @@ package xyz.leet.translator.version;
 
 import javafx.scene.control.Alert;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UpdateChecker {
     
@@ -18,7 +26,7 @@ public class UpdateChecker {
     
     public UpdateChecker() {
         
-        URL resource = getClass().getClassLoader().getResource("xyz/leet/translator/version.txt");
+        URL resource = getClass().getClassLoader().getResource("xyz/leet/translator/version/version.txt");
         
         if (resource == null) {
             error("JAR is corrupted. Please reinstall or try again");
@@ -63,11 +71,21 @@ public class UpdateChecker {
         alert.showAndWait();
     }
 
+    private Path fetchVersionFile(URI uri) throws IOException {
+    
+        Map<String, String> env = new HashMap<>();
+        
+        String[] array = uri.toString().split("!");
+        FileSystem fs = FileSystems.newFileSystem(URI.create(array[0]), env);
+    
+        return fs.getPath(array[1]);
+    }
+    
     private void instantiateVersionFile(URL resource) {
         
         try {
-            this.versionFile = Paths.get(resource.toURI()).toFile();
-        } catch (URISyntaxException e) {
+            this.versionFile = new File(fetchVersionFile(resource.toURI()).toString());
+        } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
     }
