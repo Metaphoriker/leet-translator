@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class UpdateChecker {
     
-    private static final String URL_LINK = "https://raw.githubusercontent.com/Luziferium/leet-translator/main/src/main/resources/xyz/leet/translator/version.txt";
+    private static final String URL_LINK = "https://raw.githubusercontent.com/Luziferium/leet-translator/main/src/main/resources/xyz/leet/translator/version/version.txt";
     
     private File versionFile;
     
