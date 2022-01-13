@@ -28,7 +28,7 @@ public class Translator {
         if (encryptionTypeOptional.isEmpty()) return s;
         
         EncryptionType encryptionType = encryptionTypeOptional.get();
-        s = s.replace(encryptionType.getEncryptionCode(), "");
+        s = EncryptionUtil.withoutEncryptionCode(s);
         
         return translateToNormal(s, encryptionType);
     }
