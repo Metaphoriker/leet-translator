@@ -68,6 +68,7 @@ public class Translator {
                 
                 case DISCORD_EMOJI -> stringBuilder.append(converterBundle.emojiConverter.convert(letter));
                 case FUCKERY -> stringBuilder.append(converterBundle.fuckeryConverter.convert(letter));
+                default -> throw new IllegalArgumentException();
             }
         }
         
@@ -111,6 +112,7 @@ public class Translator {
             
             case FUCKERY -> stringBuilder.append(convertToLetter(s, converterBundle.fuckeryConverter));
             case DISCORD_EMOJI -> stringBuilder.append(convertToLetter(s, converterBundle.emojiConverter));
+            default -> throw new IllegalArgumentException();
         }
         
         return stringBuilder.toString();
