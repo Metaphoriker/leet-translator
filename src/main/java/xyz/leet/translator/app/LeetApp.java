@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import xyz.leet.translator.converter.ConverterBundle;
-import xyz.leet.translator.discord.DiscordHandler;
 import xyz.leet.translator.translator.Translator;
 import xyz.leet.translator.version.UpdateChecker;
 import xyz.leet.translator.version.UpdateCheckerResult;
@@ -34,7 +33,6 @@ public class LeetApp extends Application {
         }
         
         leetController.showTranslatorView();
-        DiscordHandler.update();
     }
     
 }

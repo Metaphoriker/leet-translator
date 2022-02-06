@@ -4,7 +4,6 @@ import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import xyz.leet.translator.discord.DiscordHandler;
 import xyz.leet.translator.enums.EncryptionType;
 import xyz.leet.translator.translator.Translator;
 
@@ -21,8 +20,6 @@ public class TranslatorViewModel {
     }
     
     public void translate() {
-        
-        DiscordHandler.setState("Last used EncryptionType: " + encryptionTypeProperty.getValue().name());
         
         if (encryptionTypeProperty.getValue() == EncryptionType.DECODE)
             outputProperty.setValue(translator.translate(toTranslateProperty.get()));
