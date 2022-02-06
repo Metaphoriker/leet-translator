@@ -26,25 +26,21 @@ public class UpdateChecker {
     }
     
     public UpdateCheckerResult checkUpdate() {
-        
+    
         HttpURLConnection connection = null;
-        String latestVersion;
-        
         try {
-            
             connection = (HttpURLConnection) new URL(URL_LINK).openConnection();
             connection.connect();
-            
-            latestVersion = new BufferedReader(new InputStreamReader(connection.getInputStream())).readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
+        String latestVersion;
+        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+            latestVersion = bufferedReader.readLine();
         } catch (Exception e) {
-            
             error("Could not resolve connection to GitHub repository");
             return new UpdateCheckerResult(null, null, false);
-            
-        } finally {
-            
-            if (connection != null) connection.disconnect();
         }
         
         return new UpdateCheckerResult(latestVersion, this.version, !latestVersion.equals(this.version));
